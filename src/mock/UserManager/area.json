@@ -1,0 +1,1222 @@
+{
+  "code": "00",
+  "data": [
+    {
+      "id": "728",
+      "parentId": "0",
+      "parentName": null,
+      "code": "Q001",
+      "name": "全国",
+      "level": "1",
+      "status": "1",
+      "childList": [
+        {
+          "id": "727",
+          "parentId": "728",
+          "parentName": null,
+          "code": "C007",
+          "name": "济南市",
+          "level": "3",
+          "status": "1",
+          "childList": [
+            {
+              "id": "737",
+              "parentId": "727",
+              "parentName": null,
+              "code": "S0002",
+              "name": "山东体育学院111",
+              "level": "4",
+              "status": "0",
+              "childList": []
+            },
+            {
+              "id": "738",
+              "parentId": "727",
+              "parentName": null,
+              "code": "S0003",
+              "name": "山东建筑大学",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "739",
+              "parentId": "727",
+              "parentName": null,
+              "code": "S0004",
+              "name": "山东协和学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            }
+          ]
+        },
+        {
+          "id": "729",
+          "parentId": "728",
+          "parentName": null,
+          "code": "P001",
+          "name": "华中区",
+          "level": "2",
+          "status": "1",
+          "childList": [
+            {
+              "id": "732",
+              "parentId": "729",
+              "parentName": null,
+              "code": "C003",
+              "name": "武汉市",
+              "level": "3",
+              "status": "1",
+              "childList": [
+                {
+                  "id": "512",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0093",
+                  "name": "汉口学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": [
+                    {
+                      "id": "55",
+                      "parentId": "512",
+                      "parentName": null,
+                      "code": "ST0003",
+                      "name": "汉口看看汉",
+                      "level": "5",
+                      "status": "1",
+                      "childList": []
+                    }
+                  ]
+                },
+                {
+                  "id": "513",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0094",
+                  "name": "武汉外语外事学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "514",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0095",
+                  "name": "长江职业学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "515",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0096",
+                  "name": "武汉音乐学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "516",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0097",
+                  "name": "华中师范大学",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "517",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0098",
+                  "name": "湖北工业大学工程技术学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "518",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0099",
+                  "name": "湖北工业大学",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "519",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0100",
+                  "name": "武汉工商学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "520",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0101",
+                  "name": "武汉商学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "521",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0102",
+                  "name": "武昌职业学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "522",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0103",
+                  "name": "湖北商贸",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "523",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0104",
+                  "name": "武昌华夏理工学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "524",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0105",
+                  "name": "湖北科技职业学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "525",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0106",
+                  "name": "华中农业大学",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "526",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0107",
+                  "name": "武昌首义学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "527",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0108",
+                  "name": "武昌工学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "528",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0109",
+                  "name": "武汉体育学院体育科技学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "529",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0110",
+                  "name": "武汉工程科技学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "736",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0001",
+                  "name": "武汉纺织大学",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "822",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0088",
+                  "name": "武汉华夏理工学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "823",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0089",
+                  "name": "华中科技大学文华学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "824",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0090",
+                  "name": "武昌理工学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "825",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0091",
+                  "name": "湖北水利水电职业技术学院汤逊湖校区",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "826",
+                  "parentId": "732",
+                  "parentName": null,
+                  "code": "S0092",
+                  "name": "武汉科技职业学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                }
+              ]
+            },
+            {
+              "id": "733",
+              "parentId": "729",
+              "parentName": null,
+              "code": "C004",
+              "name": "郑州市",
+              "level": "3",
+              "status": "1",
+              "childList": [
+                {
+                  "id": "797",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0063",
+                  "name": "郑州大学西亚斯国际学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": [
+                    {
+                      "id": "831",
+                      "parentId": "797",
+                      "parentName": null,
+                      "code": "123",
+                      "name": "111",
+                      "level": "5",
+                      "status": "1",
+                      "childList": []
+                    }
+                  ]
+                },
+                {
+                  "id": "798",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0064",
+                  "name": "河南职业技术学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "799",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0065",
+                  "name": "河南中医药大学",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "800",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0066",
+                  "name": "郑州澍青医学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "801",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0067",
+                  "name": "河南农业大学",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "802",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0068",
+                  "name": "河南财政金融学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "803",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0069",
+                  "name": "中原工学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "804",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0070",
+                  "name": "黄河科技学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "805",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0071",
+                  "name": "郑州科技学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "806",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0072",
+                  "name": "郑州工业应用技术学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "807",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0073",
+                  "name": "郑州新联学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "808",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0074",
+                  "name": "河南工程学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "809",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0075",
+                  "name": "郑州航空工业管理学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "810",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0076",
+                  "name": "郑州经贸学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "811",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0077",
+                  "name": "中原工学院信息商务学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "812",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0078",
+                  "name": "河南建筑职业技术学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "813",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0079",
+                  "name": "河南机电职业学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "814",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0080",
+                  "name": "郑州升达经贸管理学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "815",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0081",
+                  "name": "郑州职业技术学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "816",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0082",
+                  "name": "河南检察职业学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "817",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0083",
+                  "name": "河南医学高等专科学校",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "818",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0084",
+                  "name": "河南教育学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "819",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0085",
+                  "name": "河南工业贸易职业学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "820",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0086",
+                  "name": "华北水利水电大学",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                },
+                {
+                  "id": "821",
+                  "parentId": "733",
+                  "parentName": null,
+                  "code": "S0087",
+                  "name": "河南牧业经济学院",
+                  "level": "4",
+                  "status": "1",
+                  "childList": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "730",
+          "parentId": "728",
+          "parentName": null,
+          "code": "C001",
+          "name": "合肥市",
+          "level": "3",
+          "status": "1",
+          "childList": [
+            {
+              "id": "772",
+              "parentId": "730",
+              "parentName": null,
+              "code": "S0037",
+              "name": "安徽电气工程职业技术学院",
+              "level": "4",
+              "status": "0",
+              "childList": []
+            },
+            {
+              "id": "773",
+              "parentId": "730",
+              "parentName": null,
+              "code": "S0038",
+              "name": "安徽交通职业技术学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "774",
+              "parentId": "730",
+              "parentName": null,
+              "code": "S0039",
+              "name": "安徽水利水电职业技术学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "775",
+              "parentId": "730",
+              "parentName": null,
+              "code": "S0040",
+              "name": "安徽建筑大学北区",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "776",
+              "parentId": "730",
+              "parentName": null,
+              "code": "S0041",
+              "name": "安徽三联学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "777",
+              "parentId": "730",
+              "parentName": null,
+              "code": "S0042",
+              "name": "安徽建筑大学南区",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "778",
+              "parentId": "730",
+              "parentName": null,
+              "code": "S0043",
+              "name": "合肥学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "779",
+              "parentId": "730",
+              "parentName": null,
+              "code": "S0044",
+              "name": "合肥职业技术学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "780",
+              "parentId": "730",
+              "parentName": null,
+              "code": "S0045",
+              "name": "安徽大学",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "781",
+              "parentId": "730",
+              "parentName": null,
+              "code": "S0046",
+              "name": "安徽大学江淮学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "782",
+              "parentId": "730",
+              "parentName": null,
+              "code": "S0047",
+              "name": "安徽职业技术学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "783",
+              "parentId": "730",
+              "parentName": null,
+              "code": "S0048",
+              "name": "安徽中医药大学",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "784",
+              "parentId": "730",
+              "parentName": null,
+              "code": "S0049",
+              "name": "安徽工商职业学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "785",
+              "parentId": "730",
+              "parentName": null,
+              "code": "S0050",
+              "name": "安徽新华学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "786",
+              "parentId": "730",
+              "parentName": null,
+              "code": "S0051",
+              "name": "安徽工业经济职业技术学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "787",
+              "parentId": "730",
+              "parentName": null,
+              "code": "S0052",
+              "name": "安徽建筑大学",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "788",
+              "parentId": "730",
+              "parentName": null,
+              "code": "S0053",
+              "name": "安徽广播影视职业技术学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "789",
+              "parentId": "730",
+              "parentName": null,
+              "code": "S0054",
+              "name": "合肥信息技术职业学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "790",
+              "parentId": "730",
+              "parentName": null,
+              "code": "S0055",
+              "name": "安徽警官职业学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            }
+          ]
+        },
+        {
+          "id": "731",
+          "parentId": "728",
+          "parentName": null,
+          "code": "C002",
+          "name": "南京市",
+          "level": "3",
+          "status": "1",
+          "childList": [
+            {
+              "id": "746",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0011",
+              "name": "江苏经贸职业技术学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "747",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0012",
+              "name": "金陵科技学院江宁校区",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "748",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0013",
+              "name": "南京工程学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "749",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0014",
+              "name": "江苏海事职业技术学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "750",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0015",
+              "name": "南京工业大学",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "751",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0016",
+              "name": "南京科技职业学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "752",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0017",
+              "name": "南京审计大学",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "753",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0018",
+              "name": "东南大学成贤学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "754",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0019",
+              "name": "南京理工大学紫金学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "755",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0020",
+              "name": "南京审计大学金审学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "756",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0021",
+              "name": "三江学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "757",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0022",
+              "name": "南京晓庄学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "758",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0023",
+              "name": "中国药科大学",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "759",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0024",
+              "name": "中国传媒大学南广学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "760",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0025",
+              "name": "东南大学（九龙湖校区）",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "761",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0026",
+              "name": "南航金城学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "762",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0027",
+              "name": "南京信息工程大学",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "763",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0028",
+              "name": "南京大学金陵学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "764",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0029",
+              "name": "江苏第二师范学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "765",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0030",
+              "name": "南京铁道职业技术学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "766",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0031",
+              "name": "南京邮电大学",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "767",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0032",
+              "name": "南京师范大学",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "768",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0033",
+              "name": "南京财经大学",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "769",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0034",
+              "name": "南京信息职业技术学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "770",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0035",
+              "name": "南京航空航天大学金城学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "771",
+              "parentId": "731",
+              "parentName": null,
+              "code": "S0036",
+              "name": "金陵科技学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            }
+          ]
+        },
+        {
+          "id": "734",
+          "parentId": "728",
+          "parentName": null,
+          "code": "C005",
+          "name": "上海市",
+          "level": "3",
+          "status": "1",
+          "childList": [
+            {
+              "id": "740",
+              "parentId": "734",
+              "parentName": null,
+              "code": "S0005",
+              "name": "上海海事大学临港校区",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "741",
+              "parentId": "734",
+              "parentName": null,
+              "code": "S0006",
+              "name": "上海立达职业技术学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "742",
+              "parentId": "734",
+              "parentName": null,
+              "code": "S0007",
+              "name": "上海出版印刷高等专科学校",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "743",
+              "parentId": "734",
+              "parentName": null,
+              "code": "S0008",
+              "name": "上海立信会计金融学院浦东校区",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "744",
+              "parentId": "734",
+              "parentName": null,
+              "code": "S0009",
+              "name": "上海政法学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "745",
+              "parentId": "734",
+              "parentName": null,
+              "code": "S0010",
+              "name": "上海大学宝山校区",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            }
+          ]
+        },
+        {
+          "id": "735",
+          "parentId": "728",
+          "parentName": null,
+          "code": "C006",
+          "name": "太原市",
+          "level": "3",
+          "status": "1",
+          "childList": [
+            {
+              "id": "791",
+              "parentId": "735",
+              "parentName": null,
+              "code": "S0057",
+              "name": "山西旅游职业学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "792",
+              "parentId": "735",
+              "parentName": null,
+              "code": "S0058",
+              "name": "山西传媒学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "793",
+              "parentId": "735",
+              "parentName": null,
+              "code": "S0059",
+              "name": "山西药科职业学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "794",
+              "parentId": "735",
+              "parentName": null,
+              "code": "S0060",
+              "name": "山西财经大学",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "795",
+              "parentId": "735",
+              "parentName": null,
+              "code": "S0061",
+              "name": "山西职业技术学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            },
+            {
+              "id": "796",
+              "parentId": "735",
+              "parentName": null,
+              "code": "S0062",
+              "name": "山西轻工职业技术学院",
+              "level": "4",
+              "status": "1",
+              "childList": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "message": "执行成功.",
+  "userRegionList": [
+    {
+      "regionId": 751
+    }
+  ]
+}

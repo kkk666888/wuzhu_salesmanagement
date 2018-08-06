@@ -1,0 +1,140 @@
+{
+  "errCode": 0,
+  "errMsg": null,
+  "data": [
+    {
+      "id": "7",
+      "itemId": null,
+      "text": "数据管理",
+      "iconCls": null,
+      "expanded": true,
+      "leaf": false,
+      "classPath": null,
+      "url": "\\",
+      "type": "dirt",
+      "parentId": "0",
+      "children": [
+        {
+          "id": "8",
+          "itemId": null,
+          "text": "数据看板",
+          "iconCls": null,
+          "expanded": true,
+          "leaf": true,
+          "classPath": "core.tradeRule.accountLimit.AccountLimitControllerApp",
+          "url": "dataDashboard",
+          "type": "menu",
+          "parentId": "7",
+          "children": null
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "itemId": null,
+      "text": "人员管理",
+      "iconCls": null,
+      "expanded": true,
+      "leaf": false,
+      "classPath": null,
+      "url": null,
+      "type": "dirt",
+      "parentId": "0",
+      "children": [
+        {
+          "id": "17",
+          "itemId": null,
+          "text": "通讯录管理",
+          "iconCls": null,
+          "expanded": true,
+          "leaf": true,
+          "classPath": "core.usermanager.enterprise.EnterpriseControllerApp",
+          "url": "AddresslistManager",
+          "type": "menu",
+          "parentId": "15",
+          "children": null
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "itemId": null,
+      "text": "系统管理",
+      "iconCls": null,
+      "expanded": true,
+      "leaf": false,
+      "classPath": null,
+      "url": null,
+      "type": "dirt",
+      "parentId": "0",
+      "children": [
+        {
+          "id": "19",
+          "itemId": null,
+          "text": "用户管理",
+          "iconCls": null,
+          "expanded": true,
+          "leaf": true,
+          "classPath": "core.sys.user.UserControllerApp",
+          "url": "userManager",
+          "type": "menu",
+          "parentId": "18",
+          "children": null
+        },
+        {
+          "id": "20",
+          "itemId": null,
+          "text": "角色管理",
+          "iconCls": null,
+          "expanded": true,
+          "leaf": false,
+          "classPath": "core.sys.role.RoleControllerApp",
+          "url": "characterManager",
+          "type": "menu",
+          "parentId": "18",
+          "children": []
+        },
+        {
+          "id": "21",
+          "itemId": null,
+          "text": "资源管理",
+          "iconCls": null,
+          "expanded": true,
+          "leaf": true,
+          "classPath": "/resource/list",
+          "url": "resourceManager",
+          "type": "menu",
+          "parentId": "18",
+          "children": null
+        },
+        {
+          "id": "22",
+          "itemId": null,
+          "text": "区域管理",
+          "iconCls": null,
+          "expanded": true,
+          "leaf": true,
+          "classPath": "core.sys.businessWarning.BusinessWarningControllerApp",
+          "url": "areaManager",
+          "type": "menu",
+          "parentId": "18",
+          "children": null
+        },
+        {
+          "id": "1063",
+          "itemId": null,
+          "text": "部门管理",
+          "iconCls": null,
+          "expanded": true,
+          "leaf": true,
+          "classPath": null,
+          "url": "departmentManager",
+          "type": "menu",
+          "parentId": "18",
+          "children": null
+        }
+      ]
+    }
+  ],
+  "success": true
+}

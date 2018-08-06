@@ -1,0 +1,115 @@
+{
+  "errCode": 0,
+  "errMsg": null,
+  "data": {
+    "limit": 25,
+    "start": 0,
+    "page": 1,
+    "total": 0,
+    "rows": [
+      {
+        "userId": 1060,
+        "username": "admin",
+        "password": "baeffd96d6e995a26ce11ab2a12df233",
+        "salt": "f759e6ff8f2c2dba56f791f3dd82da00",
+        "realname": "ADMIN",
+        "email": "11@sina.com",
+        "phone": "1558956856",
+        "dptId": 1,
+        "locked": false,
+        "statu": true,
+        "createTime": null,
+        "updateTime": 1530518238000,
+        "adminIdentify": 0,
+        "roleId": ["4"],
+        "roleName": ["管理员"],
+        "dptName": "财务部",
+        "roleList": [
+          {
+            "roleId": 4,
+            "role": "管理员",
+            "description": null,
+            "available": null,
+            "createTime": null,
+            "updateTime": null,
+            "resourceIds": null,
+            "addArr": null,
+            "deleteArr": null
+          }
+        ],
+        "credentialsSalt": "adminf759e6ff8f2c2dba56f791f3dd82da00"
+      },
+      {
+        "userId": 1043,
+        "username": "aaa",
+        "password": "f22a8504a386f22aec09287ad2cd8f59",
+        "salt": "42c82754eb1fe36e732a972b09add725",
+        "realname": "dadas",
+        "email": "asdasd@11.com",
+        "phone": "asdsa",
+        "dptId": null,
+        "locked": false,
+        "statu": true,
+        "createTime": 1462246074000,
+        "updateTime": 1530518211000,
+        "adminIdentify": 0,
+        "roleId": ["4"],
+        "roleName": ["管理员"],
+        "dptName": null,
+        "roleList": [
+          {
+            "roleId": 4,
+            "role": "管理员",
+            "description": null,
+            "available": null,
+            "createTime": null,
+            "updateTime": null,
+            "resourceIds": null,
+            "addArr": null,
+            "deleteArr": null
+          }
+        ],
+        "credentialsSalt": "aaa42c82754eb1fe36e732a972b09add725"
+      },
+      {
+        "userId": 1102,
+        "username": "fadada",
+        "password": "732e04aab28a83b52c4fd1724688fac7",
+        "salt": "a402b5ffb92cf62ec43e72ce48405dc2",
+        "realname": "法大大",
+        "email": "11@sina.com",
+        "phone": "18813579506",
+        "dptId": 2,
+        "locked": false,
+        "statu": true,
+        "createTime": null,
+        "updateTime": 1474858411000,
+        "adminIdentify": 0,
+        "roleId": ["4"],
+        "roleName": ["管理员"],
+        "dptName": null,
+        "roleList": [
+          {
+            "roleId": 4,
+            "role": "管理员",
+            "description": null,
+            "available": null,
+            "createTime": null,
+            "updateTime": null,
+            "resourceIds": null,
+            "addArr": null,
+            "deleteArr": null
+          }
+        ],
+        "credentialsSalt": "fadadaa402b5ffb92cf62ec43e72ce48405dc2"
+      }
+    ],
+    "sort": null,
+    "dir": null,
+    "condition": {
+      "statu": true,
+      "locked": false
+    }
+  },
+  "success": true
+}
