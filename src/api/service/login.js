@@ -4,5 +4,8 @@ export default {
   },
   testLogin: {
     url: 'test/permission/login'
+  },
+  logOut: {
+    url: '/ajaxLoginOut'
   }
 };

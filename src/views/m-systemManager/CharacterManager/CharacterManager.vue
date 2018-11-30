@@ -23,7 +23,7 @@
 
     <!--添加编辑角色弹窗-->
     <my-dialog :title='roleDialog.title' :visible.sync='roleDialog.visible' @onConfirm="confirmReceiptSave()">
-      <div class="confirm-receipt-dialog">
+      <div class="role-dialog">
         <el-form :model="dialogForm" :rules="dialogRules" ref="dialogForm" label-width="100px" class="dialog-form">
           <el-form-item label="角色名称" prop="role">
             <el-input v-model="dialogForm.role"></el-input>
@@ -31,12 +31,12 @@
           <el-form-item label="角色状态" prop="available">
             <el-select placeholder="请选择" v-model="dialogForm.available">
               <el-option :value="1" label="启用"></el-option>
-              <el-option :value="0" label="禁用"></el-option>
+              <el-option :value="0" label="停用"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="角色权限" v-if="roleDialog.title === '编辑角色'" prop="addIds">
-            <el-input @click.native="showResourceTree" v-model="dialogForm.showTreeName" class="show-treename" readonly placeholder="请选择角色权限" :suffix-icon="inputIcon"></el-input>
-            <el-tree ref="tree" class="dialogTree" :default-checked-keys="treeCheckedKeys" :data="treeData2" @check="getTreeChecked" v-if="treeVisible" show-checkbox node-key="id" highlight-current :props="treeOption">
+            <el-input @click.native="showResourceTree" class="show-treename" readonly placeholder="请选择角色权限" :suffix-icon="inputIcon"></el-input>
+            <el-tree ref="tree" class="dialogTree" :default-expanded-keys="['0']" :default-checked-keys="treeCheckedKeys" check-strictly :data="treeData2" @check-change="getTreeChecked" v-if="treeVisible" show-checkbox node-key="id" highlight-current :props="treeOption">
             </el-tree>
           </el-form-item>
           <el-form-item label="角色描述">
@@ -52,21 +52,8 @@ import CharacterManager from './CharacterManager.js';
 export default CharacterManager;
 </script>
 <style lang="scss" scoped>
-.CharacterManager {
-  .confirm-receipt-dialog {
-    padding: 30px 100px;
-  }
-  .dialogTree {
-    border: 1px solid #ccc;
-    // border-radius: 3px;
-    margin-top: -1px;
-  }
-  .show-treename {
-    input:hover {
-      cursor: pointer;
-    }
-  }
-}
+@import './CharacterManager.scss';
+
 </style>
 
 

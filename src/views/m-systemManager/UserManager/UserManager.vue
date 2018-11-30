@@ -20,6 +20,7 @@
       <el-button type="primary" @click="deleteUser">删除用户</el-button>
       <el-button type="primary" @click="chooseRegion">选择区域</el-button>
       <el-button type="primary" @click="resetPassword">重置密码</el-button>
+      <el-button type="primary" @click="modifyPassword">修改密码</el-button>
     </div>
     <my-table ref="userTable" :data="tableData" :option="tableOption" :onPaging="getList"></my-table>
 
@@ -39,6 +40,12 @@
           <el-form-item label="用户角色" prop="roleId">
             <el-select placeholder="请选择" multiple v-model="dialogForm.roleId">
               <el-option v-for="item in roleOptions" :key="item.roleId" :value="String(item.roleId)" :label="item.role"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="用户状态" prop="statu">
+            <el-select placeholder="请选择" v-model="dialogForm.statu">
+              <el-option :value="1" label="启用"></el-option>
+              <el-option :value="0" label="停用"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="用户邮箱" prop="email">
@@ -64,19 +71,22 @@
       </div>
     </my-dialog>
 
-    <!-- 重置密码 -->
-    <!-- <my-dialog title='重置密码' :visible.sync='resetPasswordVisible' @onConfirm="confirmResetPassword()">
-      <div class="confirm-receipt-dialog tree-dialog">
-        <el-form :model="resetPasswordForm" :rules="resetPwdRules" ref="resetPasswordForm" label-width="100px" class="dialog-form">
+    <!-- 修改密码弹窗 -->
+    <my-dialog :title='modifyDialog.title' :visible.sync='modifyDialog.visible' @onConfirm="confirmModifyPwd()">
+      <div class="confirm-receipt-dialog">
+        <el-form :model="modifyPasswordForm" :rules="modifyPasswordRules" ref="modifyPasswordForm" label-width="100px" class="dialog-form">
+          <el-form-item label="旧密码" prop="oldPwd">
+            <el-input type="password" v-model="modifyPasswordForm.oldPwd" placeholder="请输入密码"></el-input>
+          </el-form-item>
           <el-form-item label="新密码" prop="newPwd">
-            <el-input type="password" v-model="resetPasswordForm.newPwd" placeholder="请输入密码"></el-input>
+            <el-input type="password" v-model="modifyPasswordForm.newPwd" placeholder="请输入密码"></el-input>
           </el-form-item>
           <el-form-item label="确认密码" prop="confirmPwd">
-            <el-input type="password" v-model="resetPasswordForm.confirmPwd" placeholder="请再次输入密码"></el-input>
+            <el-input type="password" v-model="modifyPasswordForm.confirmPwd" placeholder="请输入密码"></el-input>
           </el-form-item>
         </el-form>
       </div>
-    </my-dialog> -->
+    </my-dialog>
   </div>
 </template>
 <script>
@@ -87,9 +97,6 @@ export default UserManager;
 .UserManager {
   .confirm-receipt-dialog {
     padding: 30px 100px;
-  }
-  .tree-dialog {
-    // padding: 10px 20px;
   }
 }
 </style>

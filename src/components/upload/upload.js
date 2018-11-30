@@ -18,6 +18,17 @@ export default {
     },
     accept: {
       type: String
+    },
+    path: {
+      type: String
+    },
+    showFilelist: {
+      type: Boolean,
+      default: true
+    },
+    btnText: {
+      type: String,
+      default: '点击上传'
     }
   },
   data() {
@@ -29,11 +40,11 @@ export default {
         accept = 'image/jpeg,image/gif,image/png,image/bmp';
         break;
       case 2:
-        accept = '.csv, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+        accept = '.xls,.xlsx';
         break;
     }
     return {
-      uploadPath: path,
+      uploadPath: this.path,
       userAccept: accept,
       fileList: [],
       data: {},
@@ -52,16 +63,18 @@ export default {
     onSuccess(response, file, fileList) {
       this.$emit('uploadSuccess', response.data, file);
 
-      if (response.success) {
-        this.$emit('input', response.data);
-      } else {
-        this.$emit('input', '');
-        this.$alert.error(response.errMsg);
+      if (response.code && response.code !== '00') {
+        this.alert.error(response.errMsg || response.msg);
+        fileList.length = 0;
+      }
+      if (!response.code) {
+        fileList.length = 0;
       }
     },
     onError(err, file, fileList) {
       this.$emit('uploadError', err, file);
       this.$emit('input', '');
+      fileList.length = 0;
       this.$alert.error(err.message || '上传出现未知错误');
     },
     onRemove(file, fileList) {
@@ -74,6 +87,8 @@ export default {
       let promise = new Promise((resolve, reject) => {
         if (this.acceptType === 1) {
           this.checkImgSize(resolve, reject);
+        } else {
+          resolve(true);
         }
       });
 
@@ -109,6 +124,9 @@ export default {
         let file = this.$refs.upload.uploadFiles[index];
         this.$refs.upload.handleRemove(file);
       }
+    },
+    getUploader() {
+      return this.$refs.upload;
     },
     //检查图片尺寸
     checkImgSize(resolve, reject) {

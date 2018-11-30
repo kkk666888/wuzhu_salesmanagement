@@ -58,10 +58,15 @@ function send(requestData, option, config) {
             storageService.cookie.remove('tokenStr');
             let href = window.location.href.split('#')[0];
             alertService.error('登陆失效，请重新登陆');
+            common.logonOut();
             window.location.href = `${href}#/login`;
-          } else if ((data.code && data.code != '00') || (data.errCode && data.errCode != 0)) {
+          } else if (data.code && (data.code === '2003' || data.code === '2005')) {
             if (option && !option.handleError) {
-              alertService.error(data.msg || data.errMsg);
+              alertService.info('账号或密码错误');
+            }
+          } else if (data.code && data.code != '00') {
+            if (option && !option.handleError) {
+              alertService.info(data.msg);
             }
           }
 

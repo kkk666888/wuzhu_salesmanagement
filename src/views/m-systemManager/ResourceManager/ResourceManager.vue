@@ -24,7 +24,7 @@
     <!--添加编辑弹窗-->
     <my-dialog :title='sourceDialog.title' :visible.sync='sourceDialog.visible' @onConfirm="confirmReceiptSave()" @onClose="closeDialog">
       <div class="confirm-receipt-dialog">
-        <el-form :model="dialogForm" :rules="dialogRules" ref="dialogForm" label-width="100px" class="dialog-form">
+        <el-form :model="dialogForm" :rules="dialogRules" ref="dialogForm" label-width="120px" class="dialog-form">
           <el-form-item label="资源名称" prop="name">
             <el-input v-model="dialogForm.name"></el-input>
           </el-form-item>
@@ -44,7 +44,10 @@
               <el-option value="false" label="停用"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="访问路径" prop="url">
+          <el-form-item label="前端访问路径" prop="classPath">
+            <el-input v-model="dialogForm.classPath"></el-input>
+          </el-form-item>
+          <el-form-item label="后端访问路径" prop="url">
             <el-input v-model="dialogForm.url"></el-input>
           </el-form-item>
           <el-form-item label="权限字符串" prop="permission">

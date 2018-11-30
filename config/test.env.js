@@ -1,5 +1,5 @@
 'use strict';
 module.exports = {
   NODE_ENV: '"test"',
-  NODE_URL: '"https://wuzhutes.woozhu.cn:50047/market"' //
+  NODE_URL: '"https://wuzhusle.woozhu.cn/market"' //
 };

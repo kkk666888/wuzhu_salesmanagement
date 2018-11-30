@@ -1,74 +1,85 @@
 <template>
   <div class="OrderDetailMoreBoard">
     <div class="search-wrap">
-
-      <div class="box-province">
-        <el-input class="province" v-model="provinceValue" placeholder="省份" clearable></el-input>
-      </div>
-
-      <div class="box-city">
-        <el-input class="city" v-model="cityValue" placeholder="城市" clearable>
+      
+      <!-- 进单渠道 -->
+      <div class="box-input-div-sty">
+        <el-input class="text-input-sty" placeholder="进单渠道" v-model="channlnameValue" clearable>
         </el-input>
       </div>
 
-      <div class="box-areaManager">
-        <el-input class="areaManager" placeholder="区域总监" v-model="areaManagerValue" clearable>
+      <!-- 订单号 -->
+      <div class="box-input-div-sty">
+        <el-input class="text-input-sty" placeholder="订单号" v-model="orderNoValue" clearable>
         </el-input>
       </div>
 
-      <div class="box-cnName">
-        <el-input class="cnName" placeholder="城市经理" v-model="cnNameValue" clearable>
+      <!-- 客户信息 -->
+      <div class="box-input-div-sty">
+        <el-input class="text-input-sty" placeholder="客户姓名" v-model="customerNameValue" clearable>
         </el-input>
       </div>
 
-      <div class="box-bdmName">
-        <el-input class="bdmName" placeholder="BDM姓名" v-model="bdmNameValue" clearable>
+      <!-- 订单产品 -->
+      <div class="box-input-div-sty">
+        <el-input class="text-input-sty" placeholder="订单产品" v-model="goodsDetailValue" clearable>
         </el-input>
       </div>
-
-      <div class="box-partnerName">
-        <el-input class="partnerName" placeholder="校园合伙人" v-model="partnerNameValue" clearable>
-        </el-input>
+      
+      <!-- 订单状态 -->
+      <div class="box-input-div-sty">
+        <el-select class="text-input-sty" v-model="orderStatusValue" multiple placeholder="订单状态">
+          <el-option v-for="(item, index) in orderStatusData" :key="index" :value="item">
+          </el-option>
+        </el-select>
+      </div>
+      
+      <!-- 订单开始时间 -->
+      <div class="box-input-div-sty">
+        <el-date-picker class="text-input-sty" v-model="applyTimeStartValue" value-format="yyyy-MM-dd" type="date" placeholder="订单日期开始时间">
+        </el-date-picker>
       </div>
 
-      <div class="box-send"> 是否已发货：
-        <el-select class="send" v-model="sendValue" placeholder="请选择">
+      <!-- 订单结束时间 -->
+      <div class="box-input-div-sty">
+        <el-date-picker class="text-input-sty" v-model="applyTimeEndValue" value-format="yyyy-MM-dd" type="date" placeholder="订单日期结束时间">
+        </el-date-picker>
+      </div>
+
+      <!-- 是否已发货 -->
+      <div class="box-input-div-sty">
+        <el-select class="text-input-sty" v-model="sendValue" placeholder="是否已发货">
           <el-option v-for="(item, index) in sendData" :key="index" :value="item">
           </el-option>
         </el-select>
       </div>
 
-      <div class="box-orderStatus"> 订单状态：
-        <el-select class="orderStatus" v-model="orderStatusValue" multiple placeholder="请选择">
-          <el-option v-for="(item, index) in orderStatusData" :key="index" :value="item">
+      <!-- 租期 -->
+      <div class="box-input-div-sty">
+        <el-input class="text-input-sty" placeholder="租期" v-model="rentTermValue" clearable>
+        </el-input>
+      </div>
+      
+      <!-- 订单类型 -->
+      <div class="box-input-div-sty">
+        <el-select class="text-input-sty" v-model="orderType" placeholder="订单类型">
+          <el-option v-for="(item, index) in orderTypeData" :key="index" :value="item.value" :label="item.label">
           </el-option>
         </el-select>
       </div>
 
-      <div class="box-applyTimeStart">
-        <el-date-picker class="applyTimeStart" v-model="applyTimeStartValue" value-format="yyyy-MM-dd" type="date" placeholder="订单日期开始时间">
-        </el-date-picker>
+      <!-- 下单省份 -->
+      <div class="box-input-div-sty">
+        <el-input class="text-input-sty" v-model="provinceValue" placeholder="下单省份" clearable></el-input>
       </div>
 
-      <div class="box-applyTimeEnd">
-        <el-date-picker class="applyTimeEnd" v-model="applyTimeEndValue" value-format="yyyy-MM-dd" type="date" placeholder="订单日期结束时间">
-        </el-date-picker>
-      </div>
-
-      <div class="box-orderNo">
-        <el-input class="orderNo" placeholder="订单号" v-model="orderNoValue" clearable>
+      <!-- 下单城市 -->
+      <div class="box-input-div-sty">
+        <el-input class="text-input-sty" v-model="cityValue" placeholder="下单城市" clearable>
         </el-input>
       </div>
 
-      <div class="area">
-        <el-input class="area-input" placeholder="学校" v-model="areaData" clearable>
-        </el-input>
-      </div>
 
-      <div class="box-channel">
-        <el-input class="channlname" placeholder="进单渠道" v-model="channlnameValue" clearable>
-        </el-input>
-      </div>
       <div class="box-confirm">
         <el-button type="primary" icon="el-icon-search" @click="onSearch">查询</el-button>
         <el-button @click="onReset">重置</el-button>
@@ -92,6 +103,8 @@ export default {
       monthValue: '',
       monthData: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
       sendData: ['是', '否'],
+      orderType:'',
+      orderTypeData: [{label:'正常订单',value:'0'},{label:'续租订单',value:'1'}],
       orderStatusValue: null,
       orderStatusData: [],
       provinceValue: '',
@@ -115,7 +128,10 @@ export default {
         pageNum: '', // 当前页
         pageIndex: '', // 忽略
         total: '' // 总条数
-      }
+      },
+      customerNameValue: '',
+      goodsDetailValue: '',
+      rentTermValue: ''
     };
   },
   mounted() {
@@ -218,19 +234,18 @@ export default {
       this.$refs.boardTable.refreshPaging(1);
     },
     onReset() {
-      this.provinceValue = '';
-      this.cityValue = '';
-      this.areaManagerValue = '';
-      this.cnNameValue = '';
-      this.bdmNameValue = '';
-      this.partnerNameValue = '';
-      this.sendValue = '';
-      this.applyTimeStartValue = '';
-      this.applyTimeEndValue = '';
-      this.orderNoValue = '';
-      this.areaData = '';
       this.channlnameValue = '',
-      this.orderStatusValue = ''
+      this.orderNoValue = '',
+      this.customerNameValue = '',
+      this.goodsDetailValue = '',
+      this.orderStatusValue = '',
+      this.applyTimeStartValue = '',
+      this.applyTimeEndValue = '',
+      this.sendValue = '',
+      this.rentTermValue = '',
+      this.orderType = '',
+      this.provinceValue = '',
+      this.cityValue = ''
     },
     onExport() {
       console.log('onExport')
@@ -249,7 +264,11 @@ export default {
         cnName: this.cnNameValue,
         bdmName: this.bdmNameValue,
         partnerName: this.partnerNameValue,
-        channlName: this.channlnameValue
+        channlName: this.channlnameValue,
+        customerName: this.customerNameValue,
+        pruduct: this.goodsDetailValue,
+        totalDays: this.rentTermValue,
+        orderType: this.orderType
       };
       this.$api.orderDetailMore.exportData.send(params, { showLoading: true }).then(res => {
         console.log('res ===> ' + JSON.stringify(res))
@@ -277,7 +296,11 @@ export default {
         cnName: this.cnNameValue,
         bdmName: this.bdmNameValue,
         partnerName: this.partnerNameValue,
-        channlName: this.channlnameValue
+        channlName: this.channlnameValue,
+        customerName: this.customerNameValue,
+        pruduct: this.goodsDetailValue,
+        totalDays: this.rentTermValue,
+        orderType: this.orderType
       };
       this.$api.orderDetailMore.queryData.send(params, { showLoading: true }).then(res => {
         console.log('getList >>> ' + JSON.stringify(res));
@@ -355,131 +378,24 @@ export default {
 </script>
 
 <style lang="less">
-.OrderDetailMoreBoard {
-  .search-wrap {
+  .box-input-div-sty {
+    width: 220px;
+    padding-right: 20px;
+    margin-bottom: 10px;
     display: inline-block;
-    div {
-      margin-left: 10px;
-    }
-    .box-year {
-      margin-bottom: 10px;
-      display: inline-block;
-      width: 15%;
-      .year {
-        width: 60%;
-      }
-    }
-    .box-month {
-      margin-bottom: 10px;
-      display: inline-block;
-      width: 15%;
-      .month {
-        width: 60%;
-      }
-    }
-    .box-province {
-      margin-bottom: 10px;
-      display: inline-block;
-      width: 12%;
-      margin-left: 0;
-    }
-    .box-city {
-      margin-bottom: 10px;
-      display: inline-block;
-      width: 12%;
-    }
-
-    .box-send {
-      margin-bottom: 10px;
-      display: inline-block;
-      width: 20%;
-      .send {
-        width: 50%;
-      }
-    }
-
-    .box-orderStatus {
-      margin-bottom: 10px;
-      display: inline-block;
-      width: 30%;
-      .orderStatus {
-        width: 70%;
-      }
-    }
-
-    .box-applyTimeStart {
-      margin-bottom: 10px;
-      display: inline-block;
-      margin-left: 0;
-    }
-
-    .box-applyTimeEnd {
-      margin-bottom: 10px;
-      display: inline-block;
-    }
-
-    .box-orderNo {
-      margin-bottom: 10px;
-      display: inline-block;
-    }
-
-    .box-school {
-      margin-bottom: 10px;
-      display: inline-block;
-      width: 20%;
-    }
-
-    .box-areaManager {
-      margin-bottom: 10px;
-      display: inline-block;
-      width: 12%;
-    }
-
-    .box-cnName {
-      margin-bottom: 10px;
-      display: inline-block;
-      width: 12%;
-    }
-
-    .box-bdmName {
-      margin-bottom: 10px;
-      display: inline-block;
-      width: 12%;
-    }
-
-    .box-partnerName {
-      margin-bottom: 10px;
-      display: inline-block;
-      width: 12%;
-    }
-
-    .area {
-      margin-bottom: 10px;
-      display: inline-block;
-    }
-    .box-channel {
-      margin-bottom: 10px;
-      display: inline-block;
-    }
-    .table {
-      margin-bottom: 10px;
-    }
-    .box-confirm {
-      margin-bottom: 10px;
-      display: inline-block;
-      margin-left: 30px;
-      .span-confirm {
-        height: 25px;
-        width: 90px;
-        color: white;
-        padding: 10px 20px;
-        font-size: 14px;
-        line-height: 30px;
-        background: #20a0ff;
-        text-align: center;
-        border-radius: 6px;
-      }
-    }
   }
-}
+  .box-time-div-sty {
+    width: 220px;
+    padding-right: 20px;
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+  
+  
+  .text-input-sty{
+    width: 220px;
+  }
+  .text-time-sty{
+    width: 220px;
+  }
 </style>

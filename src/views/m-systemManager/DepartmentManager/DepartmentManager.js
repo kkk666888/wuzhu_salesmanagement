@@ -58,7 +58,7 @@ export default {
               let status = '';
               switch (param.row.status) {
                 case '0':
-                  status = '禁用';
+                  status = '停用';
                   break;
                 case '1':
                   status = '启用';

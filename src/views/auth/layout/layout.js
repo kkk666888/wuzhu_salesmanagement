@@ -3,35 +3,6 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'App',
   data() {
-    const oldPwdValidate = (rule, value, callback) => {
-      if (value === '') {
-        callback(new Error('请输入旧密码'));
-      } else {
-        if (this.modifyPasswordForm.newPwd !== '') {
-          this.$refs.modifyPasswordForm.validateField('newPwd');
-        }
-        callback();
-      }
-    };
-    const newPwdValidate = (rule, value, callback) => {
-      if (value === '') {
-        callback(new Error('请输入新密码'));
-      } else {
-        if (this.modifyPasswordForm.confirmPwd !== '') {
-          this.$refs.modifyPasswordForm.validateField('confirmPwd');
-        }
-        callback();
-      }
-    };
-    const confirmPwdValidate = (rule, value, callback) => {
-      if (value === '') {
-        callback(new Error('请再次输入密码'));
-      } else if (value !== this.modifyPasswordForm.newPwd) {
-        callback(new Error('两次输入密码不一致'));
-      } else {
-        callback();
-      }
-    };
     return {
       //favicon,
       activeDate: new Date().getTime(),
@@ -47,21 +18,7 @@ export default {
         active: ''
       },
       isZhankuai: true,
-      realName: '',
-      modifyDialog: {
-        title: '修改密码',
-        visible: false
-      },
-      modifyPasswordForm: {
-        oldPwd: '',
-        newPwd: '',
-        confirmPwd: ''
-      },
-      modifyPasswordRules: {
-        oldPwd: [{ validator: oldPwdValidate, trigger: 'blur' }],
-        newPwd: [{ validator: newPwdValidate, trigger: 'blur' }],
-        confirmPwd: [{ validator: confirmPwdValidate, trigger: 'blur' }]
-      }
+      realName: ''
     };
   },
   computed: {
@@ -81,31 +38,6 @@ export default {
     }
   },
   methods: {
-    modifyPassword() {
-      this.modifyDialog.visible = true;
-    },
-    confirmReceiptSave() {
-      this.$refs.modifyPasswordForm.validate(valid => {
-        if (valid) {
-          this.updatePasswordFetch();
-        }
-      });
-    },
-    async updatePasswordFetch() {
-      let param = { ...this.modifyPasswordForm };
-      try {
-        let res = await this.$api.user.changePwd.send(param, { showLoading: true });
-        if (res.code === '00') {
-          this.$alert.toast('修改成功!');
-          this.$refs.modifyPasswordForm.resetFields();
-          this.modifyDialog.visible = false;
-        } else {
-          this.$alert.info(res.msg);
-        }
-      } catch (error) {
-        this.$alert.error(error.message);
-      }
-    },
     setCurrentMenuWhenRefresh() {
       let code = this.$route.meta.code;
       let currentMenu = this.$permission.getMenuByCode(this.get_permission_menus, code);
@@ -118,7 +50,19 @@ export default {
     //退出登录
     loginOut() {
       this.$common.logonOut();
-      this.$router.push({ name: 'login' });
+      this.logOutFetch();
+    },
+    async logOutFetch() {
+      let param = {};
+      try {
+        let res = await this.$api.login.logOut.send(param, { showLoad: true });
+        if (res.code === '00') {
+          this.$alert.toast('退出成功', { autoHideTimeout: 2000 });
+          this.$router.push({ name: 'login' });
+        }
+      } catch (error) {
+        this.$alert.error(`${error.message},请稍后重试`);
+      }
     },
     //菜单单击事件
     menuClick(item) {
@@ -255,7 +199,6 @@ export default {
     this.tabContainer = document.getElementById('tabContainer');
     this.setCurrentMenuWhenRefresh();
     this.bindTabScroll();
-    // console.log(this.get_user_info.realName);
     this.realName = this.get_user_info.realName;
   },
   watch: {}

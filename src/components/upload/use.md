@@ -8,6 +8,7 @@
 @uploadError="" 参数 err,file
 
 visible="true"
+path:'' 上传接口地址
 limit="1" 最大允许上传图片数量
 acceptType="1" 上传类型 1-图片 2-电子表格 其他值则取accept值
 accept="" 自定义上传类型
@@ -20,7 +21,7 @@ option = {
 ##事件
 open() 打开选择窗口
 removeFile(uid) 移除文件
-
+getUploader() 返回this.$refs.upload
 
 
 

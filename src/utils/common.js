@@ -23,11 +23,15 @@ export default {
     }
     return data;
   },
+	getUploadURL(url) {
+    return `${process.env.NODE_URL}${url}`;
+  },
   logonOut(vm) {
     storageService.session.remove(this.storageKey.resources);
   },
   storageKey: {
-    resources: 'resources'
+    resources: 'resources',
+    userInfo: 'userInfo'
   },
   //深复制
   deepCopy(obj) {
@@ -131,12 +135,36 @@ export default {
 
     return result;
   },
-  //时间格式化
-  defaultFormartData(date) {
-    return this.formatDate(date, 'yyyy-MM-dd hh:mm:ss');
+  // 金额格式化
+  moneyFormat(str) {
+    if (!str) return '0.00';
+    let num = parseFloat(str).toFixed(2);
+    return (
+      num &&
+      num.toString().replace(/(\d)(?=(\d{3})+\.)/g, function($0, $1) {
+        return $1 + ',';
+      })
+    );
   },
   //时间格式化
-  formatDate(date, fmt) {
+  formatDate(date, fmt = 'yyyy-MM-dd hh:mm:ss') {
+    if (!date) {
+      return '';
+    }
+    const type = Object.prototype.toString.call(date);
+    if (type !== '[object Date]') {
+      date = new Date(date);
+    }
+    // 兼容苹果浏览器的格式为2018-01-01 10:00:00 || 2018/01/01 10:00:00
+    // let arr = str.split(/[- : /]/);
+    // let date = null;
+    // if (arr.length === 3) {
+    //   date = new Date(arr[0], arr[1] - 1, arr[2]);
+    // } else if (arr.length === 6) {
+    //   date = new Date(arr[0], arr[1] - 1, arr[2], arr[3], arr[4], arr[5]);
+    // } else {
+    //   return str;
+    // }
     var o = {
       'M+': date.getMonth() + 1,
       'd+': date.getDate(),
@@ -162,7 +190,7 @@ export default {
   generateUniqueValue() {
     var d = new Date().getTime();
     var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      var r = (d + Math.random() * 16) % 16 | 0;
+      var r = ((d + Math.random() * 16) % 16) | 0;
       d = Math.floor(d / 16);
       return (c == 'x' ? r : (r & 0x3) | 0x8).toString(16);
     });

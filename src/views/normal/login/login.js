@@ -38,14 +38,14 @@ export default {
 
       this.$api.login.loginVaild.send(model, { showLoading: true }).then(res => {
         if (res.code === '00') {
+          this.$alert.toast('登陆成功', { autoHideTimeout: 2000 });
+          // 获取菜单数据
           this.getMenuData();
           // 设置token
           this.$storage.cookie.set('tokenStr', res.data);
           // 设置个人信息
           this.setUserInfo(res.data.userInfo);
-        } else {
-          this.$alert.error(res.msg);
-        }
+        } 
       });
     },
     async getMenuData() {
@@ -69,9 +69,7 @@ export default {
           } else {
             this.$router.push({ name: 'adminSys' });
           }
-        } else {
-          this.$alert.info(res.msg);
-        }
+        } 
       } catch (error) {
         this.$alert.error(error.message);
       }
@@ -84,7 +82,7 @@ export default {
           id: element.id,
           parentId: '',
           resourceName: element.text,
-          resourceCode: element.url,
+          resourceCode: element.classPath,
           resourceType: element.type,
           resourceIcon: '',
           leaf: element.leaf,

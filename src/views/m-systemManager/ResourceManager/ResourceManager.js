@@ -1,7 +1,7 @@
 import resource from '@/mock/ResourceManager/resource.json';
 
 export default {
-  name: 'SourceManager',
+  name: 'ResourceManager',
   data() {
     return {
       searchRules: {}, // 搜索校验
@@ -30,7 +30,8 @@ export default {
           }
         ],
         employeeNumber: [{ required: true, message: '请选择资源负责人', trigger: 'change' }],
-        url: [{ required: true, message: '请输入资源路径', trigger: 'blur' }],
+        classPath: [{ required: true, message: '请输入前端访问路径', trigger: 'blur' }],
+        url: [{ required: true, message: '请输入后端访问路径', trigger: 'blur' }],
         permission: [{ required: true, message: '请输入权限字符串', trigger: 'blur' }]
       },
       remoteOptions: null,
@@ -50,6 +51,7 @@ export default {
         parentIds: '',
         available: '',
         permission: '',
+        classPath: '',
         url: '',
         priority: '',
         resourceId: ''
@@ -99,6 +101,7 @@ export default {
         this.dialogForm.name = row.name;
         this.dialogForm.type = row.type;
         this.dialogForm.permission = row.permission;
+        this.dialogForm.classPath = row.classPath;
         this.dialogForm.url = row.url;
         this.dialogForm.priority = row.priority;
         this.dialogForm.available = String(row.available);
@@ -137,13 +140,14 @@ export default {
         diaplayField: 'name', //树结构对应的名称字段
         childField: 'children', //树结构对应的子级字段
         leafField: 'leaf', //树结构对应的是否子节点字段
-        showAllChild: true, //是否显示所有子级
+        showAllChild: false, //是否显示所有子级
         autoHeight: true, // 自动计算高度至底部,height的优先级高
         // showCheck: true,
         columns: [
           {
             prop: 'name',
-            label: '资源名称'
+            label: '资源名称',
+            width: 200
           },
           {
             prop: 'type',
@@ -151,14 +155,19 @@ export default {
             width: 100
           },
           {
+            prop: 'classPath',
+            label: '前端访问路径',
+            width: 150
+          },
+          {
             prop: 'url',
-            label: '资源路径',
-            width: 100
+            label: '后端访问路径',
+            width: 250
           },
           {
             prop: 'permission',
             label: '权限字符',
-            width: 100
+            width: 150
           },
           {
             prop: 'available',
@@ -168,10 +177,10 @@ export default {
               let status = '';
               switch (Number(param.row.available)) {
                 case 1:
-                  status = '正常';
+                  status = '启用';
                   break;
                 case 0:
-                  status = '禁用';
+                  status = '停用';
                   break;
                 default:
                   break;
@@ -225,9 +234,7 @@ export default {
           this.sourceDialog.visible = false;
           this.getList();
           this.selectedRow = null;
-        } else {
-          this.$alert.info(res.msg);
-        }
+        } 
       } catch (error) {
         this.$alert.error(error.message);
       }
@@ -242,8 +249,6 @@ export default {
           this.sourceDialog.visible = false;
           this.getList();
           this.selectedRow = null;
-        } else {
-          this.$alert.info(res.msg);
         }
       } catch (error) {
         this.$alert.error(error.message);
@@ -259,9 +264,7 @@ export default {
           this.$alert.toast('删除成功！');
           this.getList();
           this.selectedRow = null;
-        } else {
-          this.$alert.info(res.msg);
-        }
+        } 
       } catch (error) {
         this.$alert.error(error.message);
       }

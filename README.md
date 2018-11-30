@@ -96,6 +96,14 @@ npm run build
 
 ### 更新日志
 
+#### 2018-9-11 by hcg
+
+- 修复生产环境图片引用路径出错问题
+
+#### 2018-9-5 by hcg
+
+- 添加 vuex 持久化存储，添加 file-saver 文件保存
+
 #### 2018-8-6 by yuweixian
 
 - 修复 table，treeTable 刷新后仍有选中状态 bug

@@ -104,7 +104,7 @@ export default {
       let option = {
         areaStatusMap: [
           {
-            text: '正常',
+            text: '启用',
             value: '0'
           },
           {
@@ -176,7 +176,7 @@ export default {
 
               switch (param.row.status) {
                 case '0':
-                  status = '正常';
+                  status = '启用';
                   break;
                 case '1':
                   status = '停用';
@@ -235,8 +235,6 @@ export default {
           this.areaDialog.visible = false;
           this.$alert.toast('添加成功!');
           this.getList();
-        } else {
-          this.$alert.info(res.message || res.errMsg);
         }
       } catch (error) {
         this.$alert.error(error.message);
@@ -253,8 +251,6 @@ export default {
           this.$refs.dialogForm.resetFields();
           this.areaDialog.visible = false;
           this.getList();
-        } else {
-          this.$alert.info(res.message || res.errMsg);
         }
       } catch (error) {
         this.$alert.info(error.message);
@@ -270,8 +266,6 @@ export default {
         if (res.code === '00') {
           this.$alert.toast('删除成功');
           this.getList();
-        } else {
-          this.$alert.info(res.message || res.errMsg);
         }
       } catch (error) {
         this.$alert.error(error.message);

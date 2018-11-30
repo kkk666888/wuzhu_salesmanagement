@@ -3,25 +3,35 @@ import user from '@/mock/UserManager/user.json';
 export default {
   name: 'UserManager',
   data() {
-    // const newPwdValidate = (rule, value, callback) => {
-    //   if (value === '') {
-    //     callback(new Error('请输入新密码'));
-    //   } else {
-    //     if (this.resetPasswordForm.confirmPwd !== '') {
-    //       this.$refs.resetPasswordForm.validateField('confirmPwd');
-    //     }
-    //     callback();
-    //   }
-    // };
-    // const confirmPwdValidate = (rule, value, callback) => {
-    //   if (value === '') {
-    //     callback(new Error('请再次输入密码'));
-    //   } else if (value !== this.resetPasswordForm.newPwd) {
-    //     callback(new Error('两次输入密码不一致'));
-    //   } else {
-    //     callback();
-    //   }
-    // };
+    const oldPwdValidate = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入旧密码'));
+      } else {
+        if (this.modifyPasswordForm.newPwd !== '') {
+          this.$refs.modifyPasswordForm.validateField('newPwd');
+        }
+        callback();
+      }
+    };
+    const newPwdValidate = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入新密码'));
+      } else {
+        if (this.modifyPasswordForm.confirmPwd !== '') {
+          this.$refs.modifyPasswordForm.validateField('confirmPwd');
+        }
+        callback();
+      }
+    };
+    const confirmPwdValidate = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请再次输入密码'));
+      } else if (value !== this.modifyPasswordForm.newPwd) {
+        callback(new Error('两次输入密码不一致'));
+      } else {
+        callback();
+      }
+    };
     return {
       tableData: [], // table数据
       tableOption: this.getTableOption(), // table配置
@@ -40,10 +50,10 @@ export default {
       },
       dialogForm: this.initDialogForm(),
       treeOption: {
-        idField: '', // id
-        displayField: '', // 显示名称
-        childField: '', // 子节点
-        leafField: '', // 是否子节点
+        idField: 'id', // id
+        displayField: 'name', // 显示名称
+        childField: 'children', // 子节点
+        leafField: 'leaf', // 是否子节点
         showAllChild: true, // 是否显示所有子级
         showCheck: true
       },
@@ -55,12 +65,52 @@ export default {
       treeData2: null,
       treeTableOption: this.getTreeTableOption(),
       roleOptions: null,
-      treeCheckedKeys: []
+      treeCheckedKeys: [],
+      modifyDialog: {
+        title: '修改密码',
+        visible: false
+      },
+      modifyPasswordForm: {
+        oldPwd: '',
+        newPwd: '',
+        confirmPwd: ''
+      },
+      modifyPasswordRules: {
+        oldPwd: [{ validator: oldPwdValidate, trigger: 'blur' }],
+        newPwd: [{ validator: newPwdValidate, trigger: 'blur' }],
+        confirmPwd: [{ validator: confirmPwdValidate, trigger: 'blur' }]
+      }
     };
   },
   component: {},
   computed: {},
   methods: {
+    // 修改密码
+    modifyPassword() {
+      this.modifyDialog.visible = true;
+    },
+    confirmModifyPwd() {
+      this.$refs.modifyPasswordForm.validate(valid => {
+        if (valid) {
+          this.updatePasswordFetch();
+        }
+      });
+    },
+    async updatePasswordFetch() {
+      let param = { ...this.modifyPasswordForm };
+      try {
+        let res = await this.$api.user.changePwd.send(param, { showLoading: true });
+        if (res.code === '00') {
+          this.$alert.toast('修改成功!');
+          this.$refs.modifyPasswordForm.resetFields();
+          this.modifyDialog.visible = false;
+        } else {
+          this.$alert.info(res.msg);
+        }
+      } catch (error) {
+        this.$alert.error(error.message);
+      }
+    },
     initDialogForm() {
       let form = {
         userId: '',
@@ -68,6 +118,7 @@ export default {
         password: '',
         email: '',
         phone: '',
+        statu: '',
         realname: '',
         roleId: '', // 角色id
         dptId: '' // 部门id
@@ -105,7 +156,7 @@ export default {
       let option = {
         userStatusMap: [
           {
-            text: '正常',
+            text: '启用',
             value: 1
           },
           {
@@ -145,6 +196,7 @@ export default {
     },
     //表格配置
     getTableOption() {
+      const _this = this;
       let option = {
         idField: 'userId',
         showPage: true,
@@ -168,7 +220,7 @@ export default {
             prop: 'updateTime',
             label: '最后修改时间',
             render(h, param) {
-              let date = new Date(param.row.updateTime).toLocaleDateString();
+              let date = _this.$common.formatDate(param.row.updateTime);
               return <span>{date}</span>;
             }
           },
@@ -182,7 +234,7 @@ export default {
                   status = '停用';
                   break;
                 case true:
-                  status = '正常';
+                  status = '启用';
                   break;
                 default:
                   break;
@@ -230,7 +282,8 @@ export default {
           phone: row.phone,
           realname: row.realname,
           roleId: row.roleId,
-          dptId: row.dptId
+          dptId: row.dptId,
+          statu: Number(row.statu)
         };
         this.userDialog.title = '编辑用户';
         this.userDialog.visible = true;
@@ -322,8 +375,8 @@ export default {
     //加载表格数据
     getList(pageInfo, callback) {
       let param = {
-        page: pageInfo.pageIndex,
-        limit: pageInfo.pageSize,
+        pageNum: pageInfo.pageIndex,
+        pageSize: pageInfo.pageSize,
         username: this.searchModel.username,
         phone: this.searchModel.phone,
         realname: this.searchModel.realname,
@@ -399,11 +452,11 @@ export default {
           this.$api.department.tree.send(param),
           this.$api.role.all.send(param)
         ]);
-        if (department.errCode === 0 || department.code === '00') {
-          this.treeData = department.list || department.data;
-        } else {
-          this.$alert.info(department.message || department.msg);
-        }
+        // if (department.errCode === 0 || department.code === '00') {
+        //   this.treeData = department.list || department.data;
+        // } else {
+        //   this.$alert.info(department.message || department.msg);
+        // }
         if (role.errCode === 0 || role.code === '00') {
           this.roleOptions = role.data;
         } else {

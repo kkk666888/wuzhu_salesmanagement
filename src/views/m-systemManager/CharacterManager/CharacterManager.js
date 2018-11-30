@@ -30,7 +30,9 @@ export default {
       selectedRow: null,
       treeCheckedKeys: null,
       treeVisible: true,
-      inputIcon: 'el-icon-arrow-up'
+      inputIcon: 'el-icon-arrow-up',
+      addArr: [],
+      deleteArr: []
     };
   },
   component: {},
@@ -42,8 +44,8 @@ export default {
         available: '',
         description: '',
         addIds: '',
-        deleteIds: '',
-        showTreeName: ''
+        deleteIds: ''
+        // showTreeName: ''
       };
     },
     // 搜索选择框列表
@@ -81,6 +83,7 @@ export default {
     },
     //表格配置
     getTableOption() {
+      const _this = this;
       let option = {
         idField: 'roleId',
         showPage: true,
@@ -94,7 +97,7 @@ export default {
             prop: 'createTime',
             label: '创建时间',
             render(h, param) {
-              let date = new Date(param.row.createTime).toLocaleDateString();
+              let date = _this.$common.formatDate(param.row.createTime);
               return <span>{date}</span>;
             }
           },
@@ -131,15 +134,14 @@ export default {
     editRole() {
       this.treeCheckedKeys = [];
       let row = this.$refs.userTable.getSelectedRow();
+
       if (row) {
         this.selectedRow = row;
         this.treeCheckedKeys = row.resourceIds;
         this.getResourceTree();
-        this.dialogForm.showTreeName = '';
         this.dialogForm.role = row.role;
         this.dialogForm.available = Number(row.available);
         this.dialogForm.description = row.description;
-        this.dialogForm.deleteIds = row.addIds;
         this.roleDialog.title = '编辑角色';
         this.roleDialog.visible = true;
       } else {
@@ -154,14 +156,14 @@ export default {
       }
       this.treeVisible = !this.treeVisible;
     },
-    getTreeChecked(item, checkedItem) {
-      let arr = [];
-      this.dialogForm.showTreeName = '';
-      this.dialogForm.addIds = checkedItem.checkedKeys.join(',');
-      checkedItem.checkedNodes.forEach(element => {
-        arr.push(element.name);
-      });
-      this.dialogForm.showTreeName = arr.join(' ');
+    getTreeChecked(item, isChecked, checkedChildren) {
+      // console.log(checkedItem);
+
+      if (isChecked) {
+        this.addArr.push(item.id, item.parentId);
+      } else {
+        this.deleteArr.push(item.id);
+      }
     },
     deleteRole() {
       let row = this.$refs.userTable.getSelectedRow();
@@ -187,8 +189,8 @@ export default {
     //加载表格数据
     getList(pageInfo, callback) {
       let param = {
-        page: pageInfo.pageIndex,
-        limit: pageInfo.pageSize,
+        pageNum: pageInfo.pageIndex,
+        pageSize: pageInfo.pageSize,
         role: this.searchModel.role,
         available: this.searchModel.available
       };
@@ -213,6 +215,10 @@ export default {
     },
     // 更新角色
     async updateRoleFetch() {
+      let arr = [...new Set(this.addArr)];
+      let arr2 = [...new Set(this.deleteArr)];
+      this.dialogForm.addIds = arr.join(',');
+      this.dialogForm.deleteIds = arr2.join(',');
       let param = { ...this.dialogForm };
       param['roleId'] = this.selectedRow.roleId;
       try {
@@ -220,11 +226,11 @@ export default {
 
         if (res.code === '00') {
           this.$alert.toast('修改角色成功');
+          this.addArr = [];
+          this.deleteArr = [];
           this.$refs.dialogForm.resetFields();
           this.roleDialog.visible = false;
           this.$refs.userTable.refreshPaging(1);
-        } else {
-          this.$alert.info(res.errMsg);
         }
       } catch (error) {
         this.$alert.error(error.message);
@@ -232,9 +238,7 @@ export default {
     },
     // 创建角色
     async createRoleFetch() {
-      let param = {
-        role: this.dialogForm.role
-      };
+      let param = { ...this.dialogForm };
 
       try {
         let res = await this.$api.role.create.send(param, { showLoading: true });
@@ -243,8 +247,6 @@ export default {
           this.$refs.dialogForm.resetFields();
           this.roleDialog.visible = false;
           this.$refs.userTable.refreshPaging(1);
-        } else {
-          this.$alert.error(res.errMsg);
         }
       } catch (error) {
         this.$alert.error(error.message);
@@ -259,8 +261,6 @@ export default {
         let res = await this.$api.source.query.send(param, { showLoading: true });
         if (res.code === '00') {
           this.treeData2 = res.data;
-        } else {
-          this.$alert.info(res.errMsg);
         }
       } catch (error) {
         this.$alert.error(error.message);
@@ -276,8 +276,6 @@ export default {
         if (res.code === '00') {
           this.$alert.toast('删除角色成功');
           this.$refs.userTable.refreshPaging(1);
-        } else {
-          this.$alert.error(res.errMsg);
         }
       } catch (error) {
         this.$alert.error(error.message);

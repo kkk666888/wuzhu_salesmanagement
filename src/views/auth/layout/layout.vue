@@ -12,7 +12,7 @@
       <div class="index-header-right">
         <div>
           <span class="index-header-welcome">欢迎您，{{realName}}</span>
-          <a href="javascript:;" class="modify-password" @click="modifyPassword">修改密码</a>
+          <!-- <a href="javascript:;" class="modify-password" @click="modifyPassword">修改密码</a> -->
           <div class="login-out-btn" @click="loginOut()">退出登录</div>
         </div>
       </div>
@@ -41,7 +41,7 @@
         </transition>
       </div>
     </div>
-    <!-- 修改密码弹窗 -->
+    <!-- 修改密码弹窗
     <my-dialog :title='modifyDialog.title' :visible.sync='modifyDialog.visible' @onConfirm="confirmReceiptSave()">
       <div class="confirm-receipt-dialog">
         <el-form :model="modifyPasswordForm" :rules="modifyPasswordRules" ref="modifyPasswordForm" label-width="100px" class="dialog-form">
@@ -56,7 +56,7 @@
           </el-form-item>
         </el-form>
       </div>
-    </my-dialog>
+    </my-dialog> -->
   </div>
 </template>
 
