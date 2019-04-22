@@ -7,8 +7,8 @@ export default {
     simpleMenus: [], //用作判断是否在菜单权限
     userInfo: {
       id: '',
-      loginName: '',
-      realName: ''
+      loginName: '', // 账号
+      realName: '' // 真实姓名
     }
   },
   getters: {
@@ -25,11 +25,7 @@ export default {
   mutations: {
     set_permission_resources(state, resources) {
       state.isHandleData = true;
-      // state.userInfo.id = resources.id;
-      // state.userInfo.loginName = resources.loginName;
-      // state.userInfo.realName = resources.realName;
       let result = permissionUtils.getUserPermissionMenus(resources);
-
       state.menus = result.menus;
       state.menuButtons = result.menuButtons;
       state.simpleMenus = result.simpleMenus;

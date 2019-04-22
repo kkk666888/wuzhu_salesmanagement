@@ -134,6 +134,7 @@ export default {
     editRole() {
       this.treeCheckedKeys = [];
       let row = this.$refs.userTable.getSelectedRow();
+      console.log(row);
 
       if (row) {
         this.selectedRow = row;
@@ -157,8 +158,7 @@ export default {
       this.treeVisible = !this.treeVisible;
     },
     getTreeChecked(item, isChecked, checkedChildren) {
-      // console.log(checkedItem);
-
+      console.log(item, isChecked, checkedChildren);
       if (isChecked) {
         this.addArr.push(item.id, item.parentId);
       } else {
@@ -217,6 +217,7 @@ export default {
     async updateRoleFetch() {
       let arr = [...new Set(this.addArr)];
       let arr2 = [...new Set(this.deleteArr)];
+
       this.dialogForm.addIds = arr.join(',');
       this.dialogForm.deleteIds = arr2.join(',');
       let param = { ...this.dialogForm };
@@ -225,7 +226,7 @@ export default {
         let res = await this.$api.role.update.send(param, { showLoading: true });
 
         if (res.code === '00') {
-          this.$alert.toast('修改角色成功');
+          this.alert.toast('修改角色成功');
           this.addArr = [];
           this.deleteArr = [];
           this.$refs.dialogForm.resetFields();
@@ -239,14 +240,15 @@ export default {
     // 创建角色
     async createRoleFetch() {
       let param = { ...this.dialogForm };
-
       try {
         let res = await this.$api.role.create.send(param, { showLoading: true });
         if (res.code === '00') {
-          this.$alert.toast('创建角色成功');
+          this.alert.toast('创建角色成功');
           this.$refs.dialogForm.resetFields();
           this.roleDialog.visible = false;
           this.$refs.userTable.refreshPaging(1);
+        } else {
+          this.$alert.error(res.errMsg);
         }
       } catch (error) {
         this.$alert.error(error.message);
@@ -261,6 +263,8 @@ export default {
         let res = await this.$api.source.query.send(param, { showLoading: true });
         if (res.code === '00') {
           this.treeData2 = res.data;
+        } else {
+          this.$alert.info(res.errMsg);
         }
       } catch (error) {
         this.$alert.error(error.message);
@@ -274,8 +278,10 @@ export default {
       try {
         let res = await this.$api.role.delete.send(param, { showLoading: true });
         if (res.code === '00') {
-          this.$alert.toast('删除角色成功');
+          this.alert.toast('删除角色成功');
           this.$refs.userTable.refreshPaging(1);
+        } else {
+          this.$alert.error(res.errMsg);
         }
       } catch (error) {
         this.$alert.error(error.message);

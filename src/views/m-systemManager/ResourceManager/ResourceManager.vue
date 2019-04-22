@@ -26,7 +26,7 @@
       <div class="confirm-receipt-dialog">
         <el-form :model="dialogForm" :rules="dialogRules" ref="dialogForm" label-width="120px" class="dialog-form">
           <el-form-item label="资源名称" prop="name">
-            <el-input v-model="dialogForm.name"></el-input>
+            <el-input v-model.trim="dialogForm.name" clearable></el-input>
           </el-form-item>
           <el-form-item label="资源类型" prop="type">
             <el-select v-model="dialogForm.type">

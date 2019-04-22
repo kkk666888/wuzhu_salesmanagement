@@ -10,13 +10,20 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    //proxyTable:{},
     proxyTable: {
-      '/api': {
-        target: 'http://10.35.90.223:8101',
+      '/market/operation': {
+        target: 'http://192.168.1.36:8103',
         changeOrigin: true,
         pathRewrite: {
-          '^/api': '/api'
+          '^/market/operation': '/operation'
+        }
+      },
+      '/market': {
+        // target: 'http://192.168.1.36:9093', // qy
+        target: 'http://localhost:8102/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/market': '/market'
         }
       }
     },

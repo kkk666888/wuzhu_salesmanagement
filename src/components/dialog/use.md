@@ -1,4 +1,4 @@
-## 模态窗口
+## 模态窗口  option = {showFooter:true}
 
 ##使用
 <my-dialog :title='' :visible.sync='' @onConfirm="" :option=""></my-dialog>

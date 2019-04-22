@@ -104,7 +104,7 @@ export default {
       let option = {
         areaStatusMap: [
           {
-            text: '启用',
+            text: '正常',
             value: '0'
           },
           {
@@ -176,7 +176,7 @@ export default {
 
               switch (param.row.status) {
                 case '0':
-                  status = '启用';
+                  status = '正常';
                   break;
                 case '1':
                   status = '停用';
@@ -233,8 +233,10 @@ export default {
         if (res.code === '00') {
           this.$refs.dialogForm.resetFields();
           this.areaDialog.visible = false;
-          this.$alert.toast('添加成功!');
+          this.alert.toast('添加成功!');
           this.getList();
+        } else {
+          this.$alert.info(res.message || res.errMsg);
         }
       } catch (error) {
         this.$alert.error(error.message);
@@ -247,10 +249,12 @@ export default {
       try {
         let res = await this.$api.area.update.send(param, { showLoading: true });
         if (res.code === '00') {
-          this.$alert.toast('更新成功!');
+          this.alert.toast('更新成功!');
           this.$refs.dialogForm.resetFields();
           this.areaDialog.visible = false;
           this.getList();
+        } else {
+          this.$alert.info(res.message || res.errMsg);
         }
       } catch (error) {
         this.$alert.info(error.message);
@@ -264,8 +268,10 @@ export default {
       try {
         let res = await this.$api.area.delete.send(param, { showLoading: true });
         if (res.code === '00') {
-          this.$alert.toast('删除成功');
+          this.alert.toast('删除成功');
           this.getList();
+        } else {
+          this.$alert.info(res.message || res.errMsg);
         }
       } catch (error) {
         this.$alert.error(error.message);
@@ -280,7 +286,7 @@ export default {
           this.remoteOptions = res.list;
         }
       } catch (error) {
-        this.$alert.toast(error.message);
+        this.alert.toast(error.message);
       }
     },
     // 区域详情请求

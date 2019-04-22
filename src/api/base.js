@@ -5,24 +5,20 @@ import alertService from '../components/alert/alertService.js';
 import common from '../utils/common.js';
 import storageService from '../utils/storageService.js';
 
-const baseURL = process.env.NODE_URL;
-
 function send(requestData, option, config) {
   let thisObj = this;
   let promise = new Promise((resolve, reject) => {
+    let hostUrl = process.env.NODE_URL;
     let url = thisObj.url;
-    let contentType = thisObj.contentType || 'application/json';
-
+    let contentType = 'application/json';
     url += '?t=' + new Date().getTime();
     let method = thisObj.method || 'post';
     let axiosOption = {
       method: method, //get,delete,head,post,put,patch
-      baseURL: baseURL,
+      baseURL: hostUrl,
       url: url,
-      headers: {
-        'Content-type': contentType
-      },
-      timeout: 30000,
+      headers: { 'Content-type': contentType },
+      timeout: 1000000,
       withCredentials: true
     };
 
@@ -37,6 +33,7 @@ function send(requestData, option, config) {
     }
 
     axiosOption = common.deepMerge(axiosOption, config);
+
     let loadingInstance = null;
 
     if (option && option.showLoading) {
@@ -49,7 +46,6 @@ function send(requestData, option, config) {
           loadingInstance.hide();
           loadingInstance.destroy();
         }
-
         if (response.status === 200) {
           let data = response.data;
 
@@ -64,18 +60,18 @@ function send(requestData, option, config) {
             if (option && !option.handleError) {
               alertService.info('账号或密码错误');
             }
-          } else if (data.code && data.code != '00') {
+          } else if (data.code && data.code !== '00') {
             if (option && !option.handleError) {
               alertService.info(data.msg);
             }
           }
-
           resolve(data);
         } else {
           reject(error);
         }
       })
       .catch(error => {
+        // console.log(error.message);
         if (loadingInstance) {
           loadingInstance.hide();
           loadingInstance.destroy();
@@ -86,35 +82,6 @@ function send(requestData, option, config) {
   });
 
   return promise;
-}
-
-function showCatchErrors(error) {
-  let data = null;
-
-  if (error.response) {
-    data = error.response.data;
-  } else {
-    data = error.message;
-  }
-
-  if (typeof data == 'string') {
-    alertService.error(data);
-    return;
-  }
-
-  let msg = '';
-
-  if (data.errors) {
-    data.errors.forEach(item => {
-      msg += item.error + ': ' + item.defaultMessage;
-    });
-  }
-
-  if (!msg) {
-    msg = data.error + ': ' + data.message;
-  }
-
-  alertService.error(msg);
 }
 
 const apiService = {

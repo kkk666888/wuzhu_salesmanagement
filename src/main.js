@@ -15,7 +15,6 @@ import permission from './utils/permission.js';
 import permissionCode from './utils/permissionCode.js';
 import apiSerivce from './api/index.js';
 import alertService from './components/alert/alertService.js';
-import Http from './utils/http.js';
 
 //全局js错误捕获服务
 import './utils/globalErrorHandle.js';
@@ -26,7 +25,6 @@ import './assets/css/common.scss';
 
 Vue.config.productionTip = false;
 Vue.use(ElementUI, { size: 'small' });
-Vue.prototype.$http = Http
 
 //过滤器
 import filters from './filters';
@@ -55,10 +53,21 @@ Vue.component('myDialog', myDialog);
 Vue.component('myRequire', myRequire);
 Vue.component('myUpload', myUpload);
 
+Vue.prototype.storage = storageService;
+Vue.prototype.common = commonJs;
+Vue.prototype.api = apiSerivce;
+Vue.prototype.alert = alertService;
+Vue.prototype.myFilter = filters;
+Vue.prototype.enum = enumService;
+Vue.prototype.permission = permission;
+Vue.prototype.permissionCode = permissionCode;
+
+Vue.prototype.$alert = alertService;
+
+// 权限管理模块用到
 Vue.prototype.$storage = storageService;
 Vue.prototype.$common = commonJs;
 Vue.prototype.$api = apiSerivce;
-Vue.prototype.$alert = alertService;
 Vue.prototype.$myFilter = filters;
 Vue.prototype.$enum = enumService;
 Vue.prototype.$permission = permission;

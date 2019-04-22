@@ -273,7 +273,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="scss">
 .CustomerDetailMoreBoard {
   .search-wrap {
     // margin-bottom: 10px;

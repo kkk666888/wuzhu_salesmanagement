@@ -39,7 +39,7 @@
           </el-form-item>
           <el-form-item label="状态" prop="status">
             <el-select v-model="dialogForm.status" placeholder="请选择">
-              <el-option label="启用" value="0"></el-option>
+              <el-option label="正常" value="0"></el-option>
               <el-option label="停用" value="1"></el-option>
             </el-select>
           </el-form-item>

@@ -1,5 +1,3 @@
-import resource from '@/mock/ResourceManager/resource.json';
-
 export default {
   name: 'ResourceManager',
   data() {
@@ -142,7 +140,7 @@ export default {
         leafField: 'leaf', //树结构对应的是否子节点字段
         showAllChild: false, //是否显示所有子级
         autoHeight: true, // 自动计算高度至底部,height的优先级高
-        // showCheck: true,
+        //showCheck: true,
         columns: [
           {
             prop: 'name',
@@ -229,14 +227,16 @@ export default {
       try {
         let res = await this.$api.source.create.send(param, { showLoading: true });
         if (res.code === '00') {
-          this.$alert.toast('创建成功！');
+          this.alert.toast('创建成功');
           this.$refs.dialogForm.resetFields();
           this.sourceDialog.visible = false;
           this.getList();
           this.selectedRow = null;
-        } 
+        }
       } catch (error) {
-        this.$alert.error(error.message);
+        console.log(error);
+
+        // this.$alert.error(error.message);
       }
     },
     async updateSourceFetch() {
@@ -244,14 +244,16 @@ export default {
       try {
         let res = await this.$api.source.update.send(param, { showLoading: true });
         if (res.code === '00') {
-          this.$alert.toast('更新成功！');
+          this.alert.toast('更新成功');
           this.$refs.dialogForm.resetFields();
           this.sourceDialog.visible = false;
           this.getList();
           this.selectedRow = null;
         }
       } catch (error) {
-        this.$alert.error(error.message);
+        console.log(error);
+
+        // this.$alert.error(error.message);
       }
     },
     async deleteSourceFetch() {
@@ -261,12 +263,14 @@ export default {
       try {
         let res = await this.$api.source.delete.send(param, { showLoading: true });
         if (res.code === '00') {
-          this.$alert.toast('删除成功！');
+          this.alert.toast('删除成功！');
           this.getList();
           this.selectedRow = null;
-        } 
+        }
       } catch (error) {
-        this.$alert.error(error.message);
+        console.log(error);
+
+        // this.$alert.error(error.message);
       }
     },
     treeRowClick(item) {

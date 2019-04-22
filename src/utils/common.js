@@ -23,7 +23,7 @@ export default {
     }
     return data;
   },
-	getUploadURL(url) {
+  getUploadURL(url) {
     return `${process.env.NODE_URL}${url}`;
   },
   logonOut(vm) {
@@ -83,7 +83,7 @@ export default {
     if (!method.tId) {
       method.call(context);
       method.tId = 1;
-      setTimeout(() => (method.tId = 0), 500);
+      setTimeout(() => (method.tId = 0), 300);
     }
   },
   // 去抖
@@ -148,37 +148,47 @@ export default {
   },
   //时间格式化
   formatDate(date, fmt = 'yyyy-MM-dd hh:mm:ss') {
-    if (!date) {
+    try {
+      if (!date) {
+        return '';
+      }
+      const type = Object.prototype.toString.call(date);
+      if (type !== '[object Date]') {
+        date = new Date(date);
+      }
+      // 兼容苹果浏览器的格式为2018-01-01 10:00:00 || 2018/01/01 10:00:00
+      // let arr = str.split(/[- : /]/);
+      // let date = null;
+      // if (arr.length === 3) {
+      //   date = new Date(arr[0], arr[1] - 1, arr[2]);
+      // } else if (arr.length === 6) {
+      //   date = new Date(arr[0], arr[1] - 1, arr[2], arr[3], arr[4], arr[5]);
+      // } else {
+      //   return str;
+      // }
+
+      let o = {
+        'M+': date.getMonth() + 1, // 月份
+        'd+': date.getDate(), // 日
+        'h+': date.getHours(), // 小时
+        'm+': date.getMinutes(), // 分
+        's+': date.getSeconds(), // 秒
+        'q+': Math.floor((date.getMonth() + 3) / 3), // 季度
+        S: date.getMilliseconds() // 毫秒
+      };
+      if (/(y+)/.test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+      }
+      for (var k in o) {
+        if (new RegExp('(' + k + ')').test(fmt)) {
+          fmt = fmt.replace(RegExp.$1, RegExp.$1.length === 1 ? o[k] : ('00' + o[k]).substr(('' + o[k]).length));
+        }
+      }
+      return fmt;
+    } catch (e) {
+      console.log(e);
       return '';
     }
-    const type = Object.prototype.toString.call(date);
-    if (type !== '[object Date]') {
-      date = new Date(date);
-    }
-    // 兼容苹果浏览器的格式为2018-01-01 10:00:00 || 2018/01/01 10:00:00
-    // let arr = str.split(/[- : /]/);
-    // let date = null;
-    // if (arr.length === 3) {
-    //   date = new Date(arr[0], arr[1] - 1, arr[2]);
-    // } else if (arr.length === 6) {
-    //   date = new Date(arr[0], arr[1] - 1, arr[2], arr[3], arr[4], arr[5]);
-    // } else {
-    //   return str;
-    // }
-    var o = {
-      'M+': date.getMonth() + 1,
-      'd+': date.getDate(),
-      'h+': date.getHours(),
-      'm+': date.getMinutes(),
-      's+': date.getSeconds(),
-      'q+': Math.floor((date.getMonth() + 3) / 3),
-      S: date.getMilliseconds()
-    };
-    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
-    for (var k in o)
-      if (new RegExp('(' + k + ')').test(fmt))
-        fmt = fmt.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ('00' + o[k]).substr(('' + o[k]).length));
-    return fmt;
   },
   //获取时间差-小时
   getDateDifference(start, end) {

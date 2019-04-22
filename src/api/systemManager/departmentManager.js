@@ -12,6 +12,6 @@ export default {
     url: ''
   },
   tree: {
-    url: 'dept/dept-tree-info'
+    url: 'department/loadDepartmentTree'
   }
 };

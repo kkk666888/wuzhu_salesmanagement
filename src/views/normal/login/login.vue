@@ -1,9 +1,8 @@
 <template>
   <div class="login-main">
-    <div class="login-words">Hello, Welcome back!</div>
     <div class="login-div">
       <div class="login-body">
-        <div class="login-header">业务管理平台</div>
+        <!-- <div class="login-header">物主后台销售管理系统</div> -->
         <div class="login-container">
           <div class="login-item">
             <div class="login-item-icon">
@@ -25,7 +24,6 @@
         </div>
       </div>
     </div>
-    <div class="copyright">深圳金达数据科技有限公司版权所有</div>
   </div>
 </template>
 

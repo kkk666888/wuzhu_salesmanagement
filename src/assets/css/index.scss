@@ -22,9 +22,7 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
-button {
-  border: none;
-}
+
 /* 设置HTML5元素为块 */
 article,
 aside,
@@ -65,7 +63,7 @@ dt,
 dd,
 a,
 img,
-button,
+// button,
 form,
 table,
 th,

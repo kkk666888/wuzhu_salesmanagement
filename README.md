@@ -1,4 +1,4 @@
-# 销售管理系统
+# 物主后台管理系统
 
 版本 v1.0.0
 
@@ -21,7 +21,7 @@
   - 用户管理
   - 角色管理
   - 资源管理
-- 供应链管理
+- 运营管理
   - 发货管理
   - 买断管理
 
@@ -37,7 +37,6 @@
 |   +--components/            ---公共组件/业务组件目录
 |   +--directives/            ---自定义指令
 |   +--filters/               ---过滤器
-|   +--mock/                  ---模拟数据目录
 |   +--router/                ---路由(按模块分目录)
 |   +--store/                 ---状态管理(按模块分目录)
 |   +--utils/                 ---工具方法
@@ -89,7 +88,7 @@ npm run build
 
 ### 其他
 
-- 采用 eslint 检查代码、标准为'standard'或'eslint-plugin-vue'
+- 采用 eslint 检查代码、标准为'standard'
 - icon 采用 material-design，也可添加 svg 等
 - 接口文档建议写在 tapd 等位置统一管理
 - 建议用 vscode 开发，采用.vscode 目录下工作区设置，统一格式规范等
@@ -104,31 +103,22 @@ npm run build
 
 - 添加 vuex 持久化存储，添加 file-saver 文件保存
 
-#### 2018-8-6 by yuweixian
+#### 2018-8-28 by hcg
 
-- 修复 table，treeTable 刷新后仍有选中状态 bug
+- table 组件增加获取选中行的 ids
 
-#### 2018-7.25 by hcg
+#### 2018-8-23 by hcg
+
+- 修改 common 日期格式化方法，添加 debounce 去抖方法
+
+#### 2018-7-26 by hcg
+
+- 使用 sass-resources-loader 引入 sass 全局变量 common.scss、index.scss
+
+#### 2018-7-25 by hcg
 
 - 设置页面 title 名称
 - 修改菜单滚动条
-
-#### 2018-7-24 by hcg
-
-- 去掉多域名配置，一个系统只访问一个后端
-
-#### 2018-7-23 by yuweixian
-
-- 修改 dialog 组件，增加按钮文字配置
-
-#### 2018-7-20 by hcg
-
-- 修复 treeTable 的 bug
-
-#### 2018-7-12 by hcg
-
-- 增加 mock 目录
-- 全局方法添加 $ 标识
 
 #### 2018-07-10 by hcg
 

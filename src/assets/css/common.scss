@@ -7,7 +7,14 @@
 .fade-leave-active {
   opacity: 0;
 }
+.float-right {
+  float: right;
+}
 
+// 通用样式
+.ml10 {
+  margin-left: 10px;
+}
 //弹式布局
 .display-row {
   display: flex;
@@ -118,9 +125,10 @@
       }
     }
   }
-  .el-input {
-    width: 180px;
-  }
+
+  // .el-input {
+  //   width: 180px;
+  // }
   .el-form-item {
     display: inline-block;
   }
@@ -138,6 +146,11 @@
     }
   }
 }
+
+.dialog-padding {
+  padding: 0 100px;
+}
+
 .btn-item {
   margin: 20px;
 }

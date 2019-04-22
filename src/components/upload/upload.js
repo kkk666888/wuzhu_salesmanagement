@@ -34,7 +34,6 @@ export default {
   data() {
     let path = process.env.NODE_URL + '/api/upload/uploadImage';
     let accept = this.accept;
-
     switch (this.acceptType) {
       case 1:
         accept = 'image/jpeg,image/gif,image/png,image/bmp';
@@ -61,24 +60,31 @@ export default {
   },
   methods: {
     onSuccess(response, file, fileList) {
-      this.$emit('uploadSuccess', response.data, file);
+      this.$emit('uploadSuccess', response, file);
 
       if (response.code && response.code !== '00') {
         this.alert.error(response.errMsg || response.msg);
         fileList.length = 0;
+        this.$refs.upload.clearFiles();
       }
       if (!response.code) {
         fileList.length = 0;
+        this.$refs.upload.clearFiles();
       }
     },
     onError(err, file, fileList) {
       this.$emit('uploadError', err, file);
       this.$emit('input', '');
       fileList.length = 0;
-      this.$alert.error(err.message || '上传出现未知错误');
+      this.$refs.upload.clearFiles();
+      this.alert.error(err.message || '上传出现未知错误');
     },
     onRemove(file, fileList) {
+      this.$emit('onRemove', file);
       this.$emit('input', '');
+    },
+    onChange(file, fileList) {
+      // console.log(file, fileList);
     },
     onExceed(file, fileList) {},
     beforeUpload(file) {
@@ -140,7 +146,7 @@ export default {
           resolve(true);
         } else {
           this.$emit('uploadError', null, file);
-          this.$alert.info('请上传尺寸为 ' + this.option.width + ' x ' + this.option.height + ' 的图片');
+          this.alert.info('请上传尺寸为 ' + this.option.width + ' x ' + this.option.height + ' 的图片');
           reject(false);
         }
       });

@@ -143,7 +143,8 @@ export default {
           { prop: 'goodsDetail', label: '订单产品', width: 220 },
           { prop: 'rentAmount', label: '全部租金金额', width: 100 },
           { prop: 'serviceAmount', label: '意外保障服务费', width: 120 },
-          { prop: 'orderCreditAmt', label: '订单授信金额', width: 100 },
+          { prop: 'orderCreditAmt', label: '订单授信金额', width: 100 },          
+          { prop: 'customerId', label: '客户编码', width: 120},
           { prop: 'customerName', label: '客户姓名' },
           { prop: 'customerPhone', label: '客户电话号码', width: 100 },
           { prop: 'customerSchool', label: '用户学校', width: 120 },
@@ -302,7 +303,8 @@ export default {
                 BDMName: item.bdmName,
                 cityManagerName: item.cnName,
                 areaChief: item.areaManager,
-                marketChief: item.marketManager
+                marketChief: item.marketManager,
+                customerId: item.customerId
               });
             });
           }
@@ -322,7 +324,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="scss">
 .OrderDetailBoard {
   .search-wrap {
     display: inline-block;

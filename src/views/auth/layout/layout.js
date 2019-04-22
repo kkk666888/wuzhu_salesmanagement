@@ -1,5 +1,5 @@
 import { mapGetters } from 'vuex';
-//import favicon from '@/assets/images/favicon.png'
+import favicon from '@/assets/images/favicon.png';
 export default {
   name: 'App',
   data() {
@@ -11,14 +11,18 @@ export default {
         diaplayField: 'resourceName',
         childField: 'children',
         leafField: 'leaf',
-        showAllChild: true
+        showAllChild: false
       },
       routeTabs: {
         data: [],
         active: ''
       },
       isZhankuai: true,
-      realName: ''
+      userInfo: {
+        loginName: '',
+        realName: '',
+        id: ''
+      }
     };
   },
   computed: {
@@ -40,7 +44,7 @@ export default {
   methods: {
     setCurrentMenuWhenRefresh() {
       let code = this.$route.meta.code;
-      let currentMenu = this.$permission.getMenuByCode(this.get_permission_menus, code);
+      let currentMenu = this.permission.getMenuByCode(this.get_permission_menus, code);
       if (currentMenu) {
         this.$refs.tree.setCurrentTreeId(currentMenu.id);
         this.addRouteTab(this.$route, currentMenu);
@@ -49,15 +53,15 @@ export default {
     },
     //退出登录
     loginOut() {
-      this.$common.logonOut();
+      this.common.logonOut();
       this.logOutFetch();
     },
     async logOutFetch() {
       let param = {};
       try {
-        let res = await this.$api.login.logOut.send(param, { showLoad: true });
+        let res = await this.$api.login.logOut.send(param, { showLoading: true });
         if (res.code === '00') {
-          this.$alert.toast('退出成功', { autoHideTimeout: 2000 });
+          this.alert.toast('退出成功', { autoHideTimeout: 2000 });
           this.$router.push({ name: 'login' });
         }
       } catch (error) {
@@ -66,9 +70,8 @@ export default {
     },
     //菜单单击事件
     menuClick(item) {
-      if (item.resourceType == 'menu') {
-        let route = this.$permission.getRouteByCode(this.$router.options.routes, item.resourceCode);
-
+      if (item.resourceType == 'MENU') {
+        let route = this.permission.getRouteByCode(this.$router.options.routes, item.resourceCode);
         if (route) {
           this.$router.push({ name: route.name });
           this.addRouteTab(route, item);
@@ -120,7 +123,7 @@ export default {
     //移除
     tabRemove(event, item) {
       event.stopPropagation();
-      let removeIndex = this.$common.removeItem(this.routeTabs.data, 'name', item.name);
+      let removeIndex = this.common.removeItem(this.routeTabs.data, 'name', item.name);
 
       if (this.routeTabs.data.length === 0) {
         this.routeTabs.data = [];
@@ -199,7 +202,8 @@ export default {
     this.tabContainer = document.getElementById('tabContainer');
     this.setCurrentMenuWhenRefresh();
     this.bindTabScroll();
-    this.realName = this.get_user_info.realName;
+
+    this.userInfo = { ...this.get_user_info };
   },
   watch: {}
 };

@@ -1,7 +1,6 @@
 export default {
   query: {
     url: 'role/queryRoleByPage',
-    isJson: false,
     method: 'get'
   },
   delete: {

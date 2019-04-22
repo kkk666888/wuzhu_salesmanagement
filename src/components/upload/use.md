@@ -24,5 +24,4 @@ removeFile(uid) 移除文件
 getUploader() 返回this.$refs.upload
 
 
-
 text/picture/picture-card

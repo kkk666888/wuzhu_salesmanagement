@@ -20,6 +20,12 @@
         </el-input>
       </div>
 
+      <!-- 客户信息 -->
+      <div class="box-input-div-sty">
+        <el-input class="text-input-sty" placeholder="客户电话" v-model="customerPhoneValue" clearable>
+        </el-input>
+      </div>
+
       <!-- 订单产品 -->
       <div class="box-input-div-sty">
         <el-input class="text-input-sty" placeholder="订单产品" v-model="goodsDetailValue" clearable>
@@ -79,6 +85,12 @@
         </el-input>
       </div>
 
+      <!-- 商品编号 -->
+      <div class="box-input-div-sty">
+        <el-input class="text-input-sty" v-model="commodityNo" placeholder="商品编号" clearable>
+        </el-input>
+      </div>
+
 
       <div class="box-confirm">
         <el-button type="primary" icon="el-icon-search" @click="onSearch">查询</el-button>
@@ -118,6 +130,7 @@ export default {
       cnNameValue: null,
       bdmNameValue: null,
       partnerNameValue: null,
+      commodityNo: null,
       cityData: '', // 后台获取
       areaData: '', // 用户自己输入
       channlnameValue: '',
@@ -130,6 +143,7 @@ export default {
         total: '' // 总条数
       },
       customerNameValue: '',
+      customerPhoneValue: '',
       goodsDetailValue: '',
       rentTermValue: ''
     };
@@ -157,6 +171,7 @@ export default {
           { prop: 'orderSetDate', label: '订单日期', width: 100 },
           { prop: 'orderActiveDate', label: '订单激活日期', width: 100 },
           { prop: 'rentTerm', label: '租期' },
+          { prop: 'commodityNo', label: '商品编号' },
           { prop: 'goodsCategory', label: '商品品类' },
           { prop: 'goodsDetail', label: '订单产品', width: 220 },
           { prop: 'rentAmount', label: '全部租金金额', width: 100 },
@@ -170,6 +185,7 @@ export default {
           { prop: 'firstActualPay', label: '首次实际支付金额', width: 130 },
           { prop: 'paidRentAmt', label: '订单已支付金额', width: 120 },
           { prop: 'unpaidRentAmt', label: '订单未支付金额', width: 120 },
+          { prop: 'customerId', label: '客户编码', width: 120},
           { prop: 'customerName', label: '客户姓名' },
           { prop: 'customerPhone', label: '客户电话号码', width: 100 },
           { prop: 'idCard', label: '客户身份证号', width: 120 },
@@ -202,7 +218,7 @@ export default {
       let that = this
        this.$api.orderDetail.queryOrderStatus.send({ showLoading: true }).then(res => {
         this.orderStatusData = []
-        console.log('getOrderStatusData >>> ' + JSON.stringify(res))
+        //console.log('getOrderStatusData >>> ' + JSON.stringify(res))
         if (res.code === '00' && res.data) {
           res.data.forEach(function(item){
             that.orderStatusData.push(item.name)
@@ -237,6 +253,7 @@ export default {
       this.channlnameValue = '',
       this.orderNoValue = '',
       this.customerNameValue = '',
+      this.customerPhoneValue = '',
       this.goodsDetailValue = '',
       this.orderStatusValue = '',
       this.applyTimeStartValue = '',
@@ -248,7 +265,7 @@ export default {
       this.cityValue = ''
     },
     onExport() {
-      console.log('onExport')
+      //console.log('onExport')
       let params = {
         year: this.yearValue,
         month: this.monthValue,
@@ -268,7 +285,8 @@ export default {
         customerName: this.customerNameValue,
         pruduct: this.goodsDetailValue,
         totalDays: this.rentTermValue,
-        orderType: this.orderType
+        orderType: this.orderType,
+        commodityNo: this.commodityNo
       };
       this.$api.orderDetailMore.exportData.send(params, { showLoading: true }).then(res => {
         console.log('res ===> ' + JSON.stringify(res))
@@ -277,7 +295,7 @@ export default {
     },
     //加载表格数据
     getList(pageInfo, callback) {
-      console.log('getList');
+      //console.log('getList');
       let that = this;
       let params = {
         year: this.yearValue,
@@ -298,12 +316,14 @@ export default {
         partnerName: this.partnerNameValue,
         channlName: this.channlnameValue,
         customerName: this.customerNameValue,
+        phoneNumber: this.customerPhoneValue,
         pruduct: this.goodsDetailValue,
         totalDays: this.rentTermValue,
-        orderType: this.orderType
+        orderType: this.orderType,
+        commodityNo: this.commodityNo
       };
       this.$api.orderDetailMore.queryData.send(params, { showLoading: true }).then(res => {
-        console.log('getList >>> ' + JSON.stringify(res));
+        //console.log('getList >>> ' + JSON.stringify(res));
         if (res.code === '00' && res.data) {
           this.pageInfo = res.data.pageInfo;
           that.boardData = [];
@@ -334,6 +354,8 @@ export default {
                 firstActualPay: item.firstActualPay,
                 paidRentAmt: item.paidRentAmt,
                 unpaidRentAmt: item.unpaidRentAmt,
+                customerId: item.customerId,
+                commodityNo: item.commodityNo,
                 customerName: item.customerName,
                 customerPhone: item.phoneNumber,
                 idCard: item.idCard,
@@ -377,7 +399,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="scss" scoped>
   .box-input-div-sty {
     width: 220px;
     padding-right: 20px;

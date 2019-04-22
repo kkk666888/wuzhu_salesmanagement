@@ -41,7 +41,8 @@ export default {
       tHeight: null,
       selectedId: '', //绑定单选框v-model
       currentRaidoCheckedRow: null,
-      selectedRows: []
+      selectedRows: [],
+      selectedIds: []
     };
   },
   methods: {
@@ -131,6 +132,11 @@ export default {
     //复制框事件
     onSelectionChange(val) {
       this.selectedRows = val;
+      let arr = [];
+      val.map(item => {
+        arr.push(item[this.model.idField]);
+      });
+      this.selectedIds = arr;
     },
     //设置第一行为选中状态
     setFirstRowSelected() {
@@ -159,6 +165,9 @@ export default {
     //获取选中的行--针对复选框选择
     getSelectedRows() {
       return this.selectedRows;
+    },
+    getSelectedIds() {
+      return this.selectedIds;
     },
     getRowById(id) {
       let row = null;
@@ -224,7 +233,7 @@ export default {
 
     let thisObj = this;
     window.onresize = function() {
-      thisObj.$common.throttle(() => {
+      thisObj.common.throttle(() => {
         if (thisObj.model.autoHeight) {
           thisObj.setHeight();
         }

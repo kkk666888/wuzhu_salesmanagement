@@ -268,7 +268,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="scss">
 .CustomerDetailBoard {
   .search-wrap {
     div {

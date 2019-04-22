@@ -68,6 +68,7 @@ export default {
         columns: [
           { prop: 'province', label: '省份' },
           { prop: 'city', label: '城市' },
+          { prop: 'customerId', label: '还款人编码', width: 120},
           { prop: 'name', label: '还款人姓名', width: 90 },
           { prop: 'contact', label: '联系方式' },
           { prop: 'school', label: '学校', width: 100 },
@@ -122,7 +123,8 @@ export default {
                 orderStatus: item.orderDescription,
                 rentTerm: item.totalTerm,
                 repaymentTerm: item.hadPayCnt,
-                unPaymentTerm: item.notPayCnt
+                unPaymentTerm: item.notPayCnt,
+                customerId: item.customerId
               });
             });
           }

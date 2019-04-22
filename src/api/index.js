@@ -1,12 +1,12 @@
 import baseJs from './base.js';
 import login from './service/login.js';
-import logistic from './service/logistic.js';
+
 // 系统管理
-import role from './systemManager/characterManager';
-import source from './systemManager/sourceManager';
-import deparment from './systemManager/departmentManager';
-import user from './systemManager/userManager';
-import area from './systemManager/areaManager';
+import role from './systemManager/characterManager.js';
+import source from './systemManager/sourceManager.js';
+import department from './systemManager/departmentManager.js';
+import user from './systemManager/userManager.js';
+import area from './systemManager/areaManager.js';
 
 // 人员管理
 import address from './staffManager/addresslistManager';
@@ -20,22 +20,28 @@ import orderDetailMore from './dataDashBoard/orderDetailMoreBoard';
 import personal from './dataDashBoard/personalBoard';
 import wind from './dataDashBoard/windBoard';
 
+// 融资管理
+import financeManager from './financeManager/financeManager';
+// 退款管理
+import refunds from './financeManager/refundsManager';
+
 const api = {
   login: baseJs.init(login),
-  logistic: baseJs.init(logistic),
   role: baseJs.init(role),
   source: baseJs.init(source),
-  department: baseJs.init(deparment),
-  address: baseJs.init(address),
+  department: baseJs.init(department),
   user: baseJs.init(user),
   area: baseJs.init(area),
+  address: baseJs.init(address),
   custom: baseJs.init(custom),
   customerDetail: baseJs.init(customerDetail),
   customerDetailMore: baseJs.init(customerDetailMore),
   orderDetail: baseJs.init(orderDetail),
   orderDetailMore: baseJs.init(orderDetailMore),
   personal: baseJs.init(personal),
-  wind: baseJs.init(wind)
+  wind: baseJs.init(wind),
+  financeManager: baseJs.init(financeManager),
+  refunds: baseJs.init(refunds)
 };
 
 export default api;

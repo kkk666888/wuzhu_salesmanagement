@@ -170,7 +170,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="scss">
 .CustomBoard {
   .search-wrap {
     margin-bottom: 10px;

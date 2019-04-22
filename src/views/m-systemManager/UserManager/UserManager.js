@@ -1,5 +1,3 @@
-import area from '@/mock/UserManager/area.json';
-import user from '@/mock/UserManager/user.json';
 export default {
   name: 'UserManager',
   data() {
@@ -85,47 +83,21 @@ export default {
   component: {},
   computed: {},
   methods: {
-    // 修改密码
-    modifyPassword() {
-      this.modifyDialog.visible = true;
-    },
-    confirmModifyPwd() {
-      this.$refs.modifyPasswordForm.validate(valid => {
-        if (valid) {
-          this.updatePasswordFetch();
-        }
-      });
-    },
-    async updatePasswordFetch() {
-      let param = { ...this.modifyPasswordForm };
-      try {
-        let res = await this.$api.user.changePwd.send(param, { showLoading: true });
-        if (res.code === '00') {
-          this.$alert.toast('修改成功!');
-          this.$refs.modifyPasswordForm.resetFields();
-          this.modifyDialog.visible = false;
-        } else {
-          this.$alert.info(res.msg);
-        }
-      } catch (error) {
-        this.$alert.error(error.message);
-      }
-    },
     initDialogForm() {
       let form = {
         userId: '',
         username: '', // 账号
         password: '',
         email: '',
-        phone: '',
         statu: '',
+        phone: '',
         realname: '',
         roleId: '', // 角色id
         dptId: '' // 部门id
       };
       return form;
     },
-
+    // 用户资源树配置
     getTreeTableOption() {
       let option = {
         label: 'name',
@@ -221,6 +193,7 @@ export default {
             label: '最后修改时间',
             render(h, param) {
               let date = _this.$common.formatDate(param.row.updateTime);
+
               return <span>{date}</span>;
             }
           },
@@ -247,6 +220,33 @@ export default {
 
       return option;
     },
+    // 修改密码
+    modifyPassword() {
+      let row = this.$refs.userTable.getSelectedRow();
+      if (row) {
+        this.modifyDialog.visible = true;
+      } else {
+        this.$alert.info('请选择用户');
+      }
+    },
+    confirmModifyPwd() {
+      this.$refs.modifyPasswordForm.validate(valid => {
+        if (valid) {
+          this.updatePasswordFetch();
+        }
+      });
+    },
+    // 修改密码请求
+    async updatePasswordFetch() {
+      let param = { ...this.modifyPasswordForm };
+
+      let res = await this.$api.user.changePwd.send(param, { showLoading: true });
+      if (res.code === '00') {
+        this.alert.toast('修改成功!');
+        this.$refs.modifyPasswordForm.resetFields();
+        this.modifyDialog.visible = false;
+      }
+    },
     // 搜索
     search() {
       this.$refs.userTable.refreshPaging(1);
@@ -257,7 +257,7 @@ export default {
     },
     confirmReceiptSaveRegion() {
       if (!this.$refs.tree.getCheckedKeys().length) {
-        this.$alert.toast('请选择区域');
+        this.alert.toast('请选择区域');
       } else {
         this.saveUserChoosedRegion();
       }
@@ -267,7 +267,7 @@ export default {
       this.dialogForm = this.initDialogForm();
       this.userDialog.title = '添加用户';
       this.userDialog.visible = true;
-      console.log(this.dialogForm);
+      // console.log(this.dialogForm);
     },
     editUser() {
       let row = this.$refs.userTable.getSelectedRow();
@@ -363,7 +363,7 @@ export default {
       try {
         let res = await this.$api.user.chooseRegion.send(param, { showLoading: true });
         if (res.code === '00' || res.errCode === 0) {
-          this.$alert.toast('保存区域成功');
+          this.alert.toast('保存区域成功');
           this.chooseRegionVisible = false;
         } else {
           this.$alert.info(res.message || res.msg);
@@ -398,7 +398,7 @@ export default {
         let res = await this.$api.user.update.send(param, { showLoading: true });
 
         if (res.code === '00') {
-          this.$alert.toast('修改成功');
+          this.alert.toast('修改成功');
           this.$refs.dialogForm.resetFields();
           this.userDialog.visible = false;
           this.$refs.userTable.refreshPaging(1);
@@ -416,7 +416,7 @@ export default {
       try {
         let res = await this.$api.user.create.send(param, { showLoading: true });
         if (res.code === '00') {
-          this.$alert.toast('创建成功');
+          this.alert.toast('创建成功');
           this.$refs.dialogForm.resetFields();
           this.userDialog.visible = false;
           this.$refs.userTable.refreshPaging(1);
@@ -435,7 +435,7 @@ export default {
       try {
         let res = await this.$api.user.delete.send(param, { showLoading: true });
         if (res.code === '00') {
-          this.$alert.toast('删除成功');
+          this.alert.toast('删除成功');
           this.$refs.userTable.refreshPaging(1);
         } else {
           this.$alert.error(res.msg);

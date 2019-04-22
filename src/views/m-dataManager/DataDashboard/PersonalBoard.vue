@@ -137,7 +137,7 @@
   }
 </script>
 
-<style lang="less">
+<style lang="scss">
   .PersonalBoard {
     .box-export {
       margin-left: 40%;

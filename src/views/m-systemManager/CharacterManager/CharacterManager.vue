@@ -53,7 +53,6 @@ export default CharacterManager;
 </script>
 <style lang="scss" scoped>
 @import './CharacterManager.scss';
-
 </style>
 
 

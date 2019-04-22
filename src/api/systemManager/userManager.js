@@ -1,7 +1,6 @@
 export default {
   query: {
     url: 'user/queryUserBypage',
-    isJson: false,
     method: 'get'
   },
   delete: {

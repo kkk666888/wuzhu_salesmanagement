@@ -1,11 +1,12 @@
 export default {
-  loginVaild: {
+  // loginVaild: {
+  //   hostName: 'portal',
+  //   url: 'loginPost'
+  // },
+  ajaxLogin: {
     url: 'ajaxLogin'
   },
-  testLogin: {
-    url: 'test/permission/login'
-  },
   logOut: {
-    url: '/ajaxLoginOut'
+    url: 'ajaxLoginOut'
   }
 };

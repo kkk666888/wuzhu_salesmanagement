@@ -18,9 +18,8 @@
       <el-button type="primary" @click="addUser">添加用户</el-button>
       <el-button type="primary" @click="editUser">编辑用户</el-button>
       <el-button type="primary" @click="deleteUser">删除用户</el-button>
-      <el-button type="primary" @click="chooseRegion">选择区域</el-button>
-      <el-button type="primary" @click="resetPassword">重置密码</el-button>
       <el-button type="primary" @click="modifyPassword">修改密码</el-button>
+      <el-button type="primary" @click="resetPassword">重置密码</el-button>
     </div>
     <my-table ref="userTable" :data="tableData" :option="tableOption" :onPaging="getList"></my-table>
 
